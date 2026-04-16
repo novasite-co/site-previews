@@ -259,8 +259,27 @@
         </div>
     </section>
 
+    <!-- PLATFORM VIEW: Real photo band -->
+    <section class="bg-[var(--oat)] px-6 pt-16 pb-4 border-t-2 border-[var(--ink)]">
+        <div class="max-w-6xl mx-auto">
+            <div class="transit-font font-bold uppercase tracking-widest text-[var(--tram-red)] text-xs mb-4 flex items-center gap-3">
+                <span class="w-2 h-2 rounded-full bg-[var(--tram-red)]"></span>
+                From the kiosk window
+            </div>
+            <figure class="relative border-2 border-[var(--ink)] bg-[var(--sage)]/10 overflow-hidden">
+                <img src="./assets/hero-tram-window.jpg"
+                     alt="A tray of chocolate biscuit cake bars on the MIMA counter, with a Luas tram pulling into Beechwood station visible through the kiosk window."
+                     class="w-full h-auto object-cover aspect-[16/10] md:aspect-[21/9]">
+                <figcaption class="transit-font text-xs uppercase tracking-widest text-[var(--ink)] bg-[var(--oat)] px-3 py-2 border-t border-[var(--ink)] flex justify-between">
+                    <span>Beechwood platform · Green Line</span>
+                    <span class="text-[var(--sage-dark)]">Next tram: 5 min</span>
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+
     <!-- ABOUT: COMMUNITY LAYER -->
-    <section id="about" class="py-24 bg-[var(--oat)] px-6 relative border-t-2 border-[var(--ink)]">
+    <section id="about" class="py-24 bg-[var(--oat)] px-6 relative">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative">
 
             <div class="col-span-1 lg:col-span-5 flex flex-col justify-between order-2 lg:order-1">
@@ -344,6 +363,24 @@
     <!-- MENU: THE TIMETABLE -->
     <section id="menu" class="py-24 bg-[var(--oat)] px-6">
         <div class="max-w-7xl mx-auto">
+
+            <!-- Real-photo menu strip -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <figure class="relative border-2 border-[var(--ink)]">
+                    <img src="./assets/baked-eggs.jpg" alt="A plate of baked eggs with chives, served with toasted sourdough and a side of rocket, alongside a MIMA-branded takeaway cup with a cappuccino and latte art." class="w-full aspect-[4/3] object-cover">
+                    <figcaption class="transit-font text-xs uppercase tracking-widest text-[var(--ink)] bg-[var(--oat)] px-3 py-2 border-t-2 border-[var(--ink)] flex justify-between">
+                        <span>Baked Eggs · Breakfast</span>
+                        <span class="text-[var(--sage-dark)]">On the kiosk counter</span>
+                    </figcaption>
+                </figure>
+                <figure class="relative border-2 border-[var(--ink)]">
+                    <img src="./assets/cajun-chicken.jpg" alt="The Cajun Chicken Open Sandwich — spiced chicken strips on rocket and smashed avocado toast, drizzled with cream and chives." class="w-full aspect-[4/3] object-cover">
+                    <figcaption class="transit-font text-xs uppercase tracking-widest text-[var(--ink)] bg-[var(--oat)] px-3 py-2 border-t-2 border-[var(--ink)] flex justify-between">
+                        <span>Cajun Chicken Open · Lunch</span>
+                        <span class="text-[var(--tram-red)]">€14.50</span>
+                    </figcaption>
+                </figure>
+            </div>
 
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 bg-[var(--sage)] p-6 md:p-8 rounded-sm border-2 border-[var(--ink)]">
                 <div>
