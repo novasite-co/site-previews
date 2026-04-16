@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL LOCO BURRITO | Williamsburg BK</title>
+
+    <!--
+    aesthetic_dna: Punk Zine / Cut-and-Paste / Brutalist Photocopy
+    ui_paradigm: Dimensional Paste-up Collage
+    palette: Cream (#f4f1ea), Black (#0a0a0a), Deep Red (#c1121f), Mustard Yellow (#fca311)
+    aidesigner_run_id: cbd24685-ef4b-4475-9175-74b74a0d6697
+    -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'loco-cream': '#f9f6f0',
+                        'loco-black': '#0a0a0a',
+                        'loco-red': '#c1121f',
+                        'loco-yellow': '#fca311',
+                    },
+                    fontFamily: {
+                        'display': ['Anton', 'sans-serif'],
+                        'body': ['"Courier Prime"', 'monospace'],
+                        'marker': ['"Permanent Marker"', 'cursive'],
+                    },
+                    boxShadow: {
+                        'brutal': '8px 8px 0px 0px rgba(10, 10, 10, 1)',
+                        'brutal-sm': '4px 4px 0px 0px rgba(10, 10, 10, 1)',
+                        'brutal-yellow': '8px 8px 0px 0px rgba(252, 163, 17, 1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::selection { background-color: #0a0a0a; color: #fca311; }
+        body {
+            background-color: #f9f6f0;
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(90deg, rgba(10,10,10,0.03) 1px, transparent 1px),
+                linear-gradient(rgba(10,10,10,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .halftone-bg {
+            background-image: radial-gradient(circle, #0a0a0a 2px, transparent 2px);
+            background-size: 8px 8px;
+        }
+        .photocopy-img { filter: grayscale(100%) contrast(150%) brightness(90%); mix-blend-mode: multiply; }
+        .photocopy-red { filter: grayscale(100%) sepia(100%) hue-rotate(330deg) saturate(500%) contrast(150%); mix-blend-mode: multiply; }
+        .torn-top { clip-path: polygon(0% 20px, 5% 0px, 10% 22px, 15% 4px, 20% 18px, 25% 2px, 30% 20px, 35% 6px, 40% 25px, 45% 0px, 50% 18px, 55% 4px, 60% 24px, 65% 2px, 70% 15px, 75% 5px, 80% 22px, 85% 0px, 90% 18px, 95% 4px, 100% 20px, 100% 100%, 0% 100%); }
+        .torn-bottom { clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 20px), 95% 100%, 90% calc(100% - 18px), 85% 100%, 80% calc(100% - 22px), 75% calc(100% - 5px), 70% calc(100% - 15px), 65% calc(100% - 2px), 60% calc(100% - 24px), 55% calc(100% - 4px), 50% calc(100% - 18px), 45% 100%, 40% calc(100% - 25px), 35% calc(100% - 6px), 30% calc(100% - 20px), 25% calc(100% - 2px), 20% calc(100% - 18px), 15% calc(100% - 4px), 10% calc(100% - 22px), 5% 100%, 0% calc(100% - 20px)); }
+        .tape {
+            position: absolute;
+            background-color: rgba(244, 241, 234, 0.85);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            backdrop-filter: blur(2px);
+            z-index: 10;
+        }
+        .tape::before, .tape::after {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 4px;
+            background-image: linear-gradient(to bottom, transparent 10%, rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.1) 20%, transparent 20%, transparent 30%, rgba(0,0,0,0.1) 30%, rgba(0,0,0,0.1) 40%, transparent 40%, transparent 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1) 60%, transparent 60%, transparent 70%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0.1) 80%, transparent 80%, transparent 90%, rgba(0,0,0,0.1) 90%, rgba(0,0,0,0.1) 100%);
+        }
+        .tape::before { left: -2px; }
+        .tape::after { right: -2px; }
+        .menu-leader { border-bottom: 2px dotted #0a0a0a; flex-grow: 1; margin: 0 10px; position: relative; top: -6px; }
+        .text-outline { color: transparent; -webkit-text-stroke: 2px #0a0a0a; }
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #f9f6f0; border-left: 3px solid #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #c1121f; border: 3px solid #0a0a0a; }
+
+        /* Sticky nav */
+        html { scroll-padding-top: 80px; }
+        .punk-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 40;
+            background-color: #0a0a0a;
+            border-bottom: 4px solid #c1121f;
+            transform: translateY(-100%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .punk-nav.visible { transform: translateY(0); }
+        .punk-nav-inner {
+            max-width: 72rem;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            height: 64px;
+        }
+        .punk-nav-brand {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.5rem;
+            color: #fca311;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 1;
+            transform: rotate(-2deg);
+            text-decoration: none;
+        }
+        .punk-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .punk-nav-links li { position: relative; }
+        .punk-nav-links a {
+            display: block;
+            font-family: '"Courier Prime"', monospace;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #f9f6f0;
+            text-decoration: none;
+            padding: 6px 14px;
+            border: 2px solid transparent;
+            transition: color 0.15s, border-color 0.15s, transform 0.15s;
+        }
+        .punk-nav-links a:hover {
+            color: #fca311;
+            border: 2px dashed #fca311;
+            transform: rotate(-1deg) scale(1.05);
+        }
+        .punk-nav-links a.active-link {
+            background: #c1121f;
+            color: #f9f6f0;
+            border: 2px solid #f9f6f0;
+            transform: rotate(1deg);
+        }
+        /* Tape accent on brand */
+        .punk-nav-brand-wrap { position: relative; display: inline-block; }
+        .punk-nav-brand-wrap .nav-tape {
+            position: absolute;
+            width: 40px;
+            height: 14px;
+            background-color: rgba(244, 241, 234, 0.6);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            top: -6px;
+            right: -12px;
+            transform: rotate(8deg);
+            z-index: 2;
+            pointer-events: none;
+        }
+        /* Divider slashes between links */
+        .punk-nav-links li + li::before {
+            content: '//';
+            font-family: '"Courier Prime"', monospace;
+            color: #c1121f;
+            font-size: 0.75rem;
+            font-weight: 700;
+            position: absolute;
+            left: -4px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        /* Mobile hamburger */
+        .punk-nav-toggle {
+            display: none;
+            background: none;
+            border: 2px solid #f9f6f0;
+            color: #f9f6f0;
+            font-family: 'Anton', sans-serif;
+            font-size: 1.25rem;
+            padding: 4px 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .punk-nav-toggle:hover { border-color: #fca311; color: #fca311; }
+        @media (max-width: 768px) {
+            .punk-nav-toggle { display: block; }
+            .punk-nav-links {
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: #0a0a0a;
+                border-bottom: 4px solid #c1121f;
+                flex-direction: column;
+                gap: 0;
+                display: none;
+                padding: 8px 0;
+            }
+            .punk-nav-links.open { display: flex; }
+            .punk-nav-links li + li::before { display: none; }
+            .punk-nav-links a {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body class="text-loco-black font-body antialiased selection:bg-loco-black selection:text-loco-yellow">
+
+    <!-- PUNK NAV -->
+    <nav class="punk-nav" id="punk-nav" aria-label="Main navigation">
+        <div class="punk-nav-inner">
+            <a href="#home" class="punk-nav-brand-wrap">
+                <span class="nav-tape"></span>
+                <span class="punk-nav-brand">El Loco</span>
+            </a>
+            <button class="punk-nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+            <ul class="punk-nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#find-us">Find Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <a href="tel:7183888215" class="fixed top-4 right-4 md:top-8 md:right-8 z-50 group hover:-translate-y-1 transition-transform duration-200">
+        <div class="bg-loco-yellow border-[3px] border-loco-black shadow-brutal p-3 md:p-4 rotate-2 flex flex-col items-center">
+            <span class="font-display text-xl md:text-2xl leading-none uppercase tracking-wide">Call It In</span>
+            <span class="font-body font-bold text-lg md:text-xl leading-none mt-1">718-388-8215</span>
+        </div>
+    </a>
+
+    <div class="absolute top-32 left-4 md:left-24 z-20 -rotate-12 pointer-events-none">
+        <div class="bg-loco-black text-loco-cream rounded-full w-24 h-24 flex items-center justify-center p-2 text-center font-marker text-sm leading-tight border-2 border-dashed border-loco-yellow shadow-md">
+            LATE NIGHT<br>SALVATION
+        </div>
+    </div>
+
+    <div class="absolute top-[80vh] right-0 md:right-48 z-20 rotate-12 pointer-events-none hidden md:block">
+        <div class="bg-loco-red text-loco-cream w-32 h-16 flex items-center justify-center font-display text-xl uppercase border-4 border-loco-black transform skew-x-12">
+            GRAHAM AVE
+        </div>
+    </div>
+
+    <main id="home" class="relative min-h-screen pt-24 pb-32 md:pt-32 px-4 md:px-12 flex flex-col justify-center overflow-hidden">
+        <div class="absolute top-10 left-10 md:left-32 w-3/4 md:w-1/2 h-[70vh] halftone-bg border-[3px] border-loco-black opacity-30 -z-10"></div>
+        <div class="max-w-6xl mx-auto w-full relative">
+            <div class="relative z-10 w-full md:w-3/4">
+                <h1 class="font-display uppercase text-[15vw] md:text-[180px] leading-[0.8] tracking-tighter text-loco-red drop-shadow-[4px_4px_0px_#0a0a0a] transition-all">EL LOCO</h1>
+                <h1 class="font-display uppercase text-[15vw] md:text-[180px] leading-[0.8] tracking-tighter text-loco-cream text-outline ml-6 md:ml-16 -mt-4 md:-mt-8 relative drop-shadow-[2px_2px_0px_#0a0a0a]">
+                    BURRITO
+                    <div class="tape w-24 md:w-32 h-6 md:h-8 -top-3 md:-top-4 left-1/4 -rotate-3"></div>
+                </h1>
+            </div>
+
+            <div class="relative w-full md:w-1/2 md:absolute md:top-24 md:right-0 mt-12 md:mt-0 z-0">
+                <div class="border-[4px] border-loco-black shadow-brutal bg-loco-black p-2 rotate-3 transition-transform hover:rotate-1">
+                    <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?auto=format&fit=crop&w=800&q=80" alt="Messy counter at a taqueria with foil wrapped burritos" class="w-full h-auto photocopy-img border border-loco-black">
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-loco-cream border-2 border-loco-black p-2 font-marker text-sm -rotate-6 shadow-brutal-sm">
+                    Est. Whenever
+                    <div class="tape w-12 h-4 -top-2 left-6 rotate-12"></div>
+                </div>
+            </div>
+
+            <div class="relative mt-24 md:mt-48 w-[90%] md:w-[45%] ml-auto bg-loco-yellow border-[3px] border-loco-black p-6 md:p-8 -rotate-2 shadow-brutal z-20">
+                <div class="tape w-20 h-6 -top-3 left-1/2 -ml-10 -rotate-2"></div>
+                <div class="flex gap-4 items-start">
+                    <div class="text-4xl font-display text-loco-red mt-1">"</div>
+                    <div>
+                        <p class="font-body text-xl md:text-2xl font-bold uppercase leading-snug">Great burritos, and the nachos are great and not too filling.</p>
+                        <p class="font-body text-sm mt-4 font-bold tracking-widest border-t-2 border-loco-black pt-2 w-max">— Yelp Review</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="relative bg-loco-black text-loco-cream pt-32 pb-48 torn-top torn-bottom z-10" id="menu">
+        <div class="max-w-6xl mx-auto px-4 md:px-12 relative">
+            <div class="relative inline-block mb-16 md:mb-24 rotate-1">
+                <div class="bg-loco-red border-[4px] border-loco-cream p-4 shadow-[8px_8px_0px_0px_#fca311]">
+                    <h2 class="font-display text-6xl md:text-8xl uppercase tracking-wider text-loco-cream">THE MENU</h2>
+                </div>
+                <div class="tape w-24 h-8 -top-4 right-[-20px] rotate-12 !bg-opacity-50"></div>
+                <div class="tape w-24 h-8 bottom-[-10px] left-[-20px] -rotate-6 !bg-opacity-50"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-24 md:gap-y-16 font-body font-bold text-lg">
+                <div class="relative bg-loco-cream text-loco-black p-6 border-[3px] border-loco-black">
+                    <h3 class="font-display text-4xl uppercase mb-6 bg-loco-black text-loco-cream inline-block px-3 py-1 -ml-8 rotate-[-2deg]">Crazy Burritos</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-end"><span class="uppercase">Regular Burrito</span><div class="menu-leader"></div><span>$5.50</span></li>
+                        <li class="flex items-end"><span class="uppercase text-loco-red">Baja Burrito</span><div class="menu-leader"></div><span class="text-loco-red">$7.50</span></li>
+                    </ul>
+                    <div class="absolute -right-4 -bottom-4 font-marker text-sm bg-loco-yellow p-2 border-2 border-loco-black rotate-6">Massive.</div>
+                </div>
+
+                <div class="relative text-loco-cream p-6 border-[3px] border-loco-cream border-dashed">
+                    <h3 class="font-display text-4xl uppercase mb-6 text-loco-yellow tracking-wide">Tacos</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-end"><span class="uppercase">1 Taco</span><div class="flex-grow mx-2 border-b-2 border-loco-cream border-dotted mb-1"></div><span>$1.25</span></li>
+                        <li class="flex items-end"><span class="uppercase">2 Tacos</span><div class="flex-grow mx-2 border-b-2 border-loco-cream border-dotted mb-1"></div><span>$2.00</span></li>
+                    </ul>
+                </div>
+
+                <div class="relative bg-loco-red text-loco-cream p-6 border-[3px] border-loco-black rotate-1 shadow-brutal">
+                    <div class="tape w-16 h-6 -top-3 right-10 rotate-6"></div>
+                    <h3 class="font-display text-4xl uppercase mb-6 text-loco-black">Fajitas & Flautas</h3>
+                    <ul class="space-y-4 text-loco-black">
+                        <li class="flex items-end bg-loco-yellow p-1 font-bold"><span class="uppercase text-loco-black pl-2">Grilled Chicken Fajita Platter</span><div class="menu-leader !border-loco-black"></div><span class="pr-2">$10.00</span></li>
+                        <li class="flex items-end text-loco-cream"><span class="uppercase">Grilled Veggie Fajita Platter</span><div class="menu-leader !border-loco-cream"></div><span>$8.00</span></li>
+                        <li class="flex items-end text-loco-cream"><span class="uppercase">3 Super Flautas</span><div class="menu-leader !border-loco-cream"></div><span>$4.50</span></li>
+                        <li class="flex items-end text-loco-cream"><span class="uppercase">6 Super Flautas</span><div class="menu-leader !border-loco-cream"></div><span>$7.50</span></li>
+                    </ul>
+                </div>
+
+                <div class="relative text-loco-cream p-6 flex flex-col justify-end">
+                    <div class="w-full h-px bg-loco-cream mb-6"></div>
+                    <h3 class="font-display text-4xl uppercase mb-4 text-loco-cream">Soups & Salads</h3>
+                    <ul class="space-y-2 mb-8 text-sm">
+                        <li class="flex justify-between uppercase"><span>Tortilla Soup (Small)</span><span>$3.25</span></li>
+                        <li class="flex justify-between uppercase"><span>Tortilla Soup (Large)</span><span>$5.50</span></li>
+                        <li class="flex justify-between uppercase text-loco-yellow"><span>Regular Salad</span><span>$5.50</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative bg-loco-yellow py-32 -mt-16 z-0" id="about">
+        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+        <div class="max-w-6xl mx-auto px-4 md:px-12 flex flex-col md:flex-row items-center gap-12 md:gap-24 relative z-10">
+            <div class="w-full md:w-1/2 relative">
+                <div class="bg-loco-cream p-4 pb-16 border-[4px] border-loco-black shadow-brutal transform -rotate-3">
+                    <img src="https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?auto=format&fit=crop&w=800&q=80" alt="Person eating street food late at night" class="w-full h-auto photocopy-red border border-loco-black">
+                    <div class="absolute bottom-4 left-4 font-marker text-loco-black text-2xl">NO BS.</div>
+                </div>
+                <img src="https://api.iconify.design/ph:skull-bold.svg?color=%230a0a0a" alt="Skull" class="absolute -top-10 -right-4 w-16 h-16 bg-loco-cream rounded-full border-2 border-loco-black p-2 rotate-12 shadow-md">
+            </div>
+            <div class="w-full md:w-1/2">
+                <div class="bg-loco-black text-loco-cream p-8 md:p-12 border-[4px] border-loco-red translate-x-0 md:-translate-x-12 translate-y-6 shadow-[8px_8px_0px_0px_#c1121f]">
+                    <h2 class="font-display text-5xl md:text-7xl uppercase mb-6 text-loco-yellow leading-none tracking-tight">Zero Frills,<br>Maximum Flava.</h2>
+                    <p class="font-body text-lg leading-relaxed mb-6">We aren't a concept. We aren't a pop-up. We're a counter on Graham Ave plastering local show flyers on the walls and rolling burritos thick enough to soak up whatever you did tonight.</p>
+                    <p class="font-body text-lg font-bold text-loco-red bg-loco-cream inline-block px-2">NO RESERVATIONS. NO FINE DINING.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="relative bg-loco-cream pt-24 pb-12 border-t-[8px] border-loco-black" id="find-us">
+        <div class="max-w-6xl mx-auto px-4 md:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+                <div class="w-full md:w-2/3">
+                    <p class="font-body font-bold text-xl mb-4 border-b-4 border-loco-red inline-block pb-1 uppercase">Location</p>
+                    <h1 class="font-display text-7xl md:text-[120px] leading-[0.85] uppercase tracking-tighter text-loco-black break-words">345<br>Graham<br>Ave.</h1>
+                    <p class="font-marker text-2xl md:text-3xl text-loco-red mt-4 ml-2 -rotate-2">Brooklyn, NY 11211</p>
+                </div>
+                <div class="w-full md:w-1/3 bg-loco-black text-loco-cream p-6 md:p-8 flex flex-col gap-8 shadow-brutal-yellow border-2 border-loco-yellow rotate-1">
+                    <div class="tape w-24 h-6 -top-3 left-1/2 -ml-12 rotate-[-5deg]"></div>
+                    <div>
+                        <p class="font-body text-loco-yellow uppercase font-bold text-sm mb-1 border-b border-loco-yellow/30 pb-1">Hit the line</p>
+                        <a href="tel:7183888215" class="font-display text-4xl hover:text-loco-red transition-colors block mt-2">718-388-8215</a>
+                    </div>
+                    <div>
+                        <p class="font-body text-loco-yellow uppercase font-bold text-sm mb-1 border-b border-loco-yellow/30 pb-1">Stalk Us</p>
+                        <a href="https://instagram.com/locoburrito_bk" class="font-display text-4xl hover:text-loco-red transition-colors flex items-center gap-2 mt-2 group">@locoburrito_bk</a>
+                    </div>
+                    <div>
+                        <a href="https://maps.google.com/?q=345+Graham+Ave,+Brooklyn,+NY+11211" target="_blank" rel="noopener noreferrer" class="font-display text-2xl hover:text-loco-red transition-colors flex items-center gap-2 mt-2 group uppercase">Get Directions <span class="text-loco-yellow text-lg">&rarr;</span></a>
+                    </div>
+                    <div class="mt-4 pt-4 border-t-2 border-dashed border-loco-red/50">
+                        <p class="font-body text-xs text-loco-cream/70 uppercase">Open Late.<br>Closed when we run out.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-24 pt-8 border-t-[3px] border-loco-black flex flex-col md:flex-row justify-between items-center gap-4 font-body text-sm font-bold uppercase">
+                <p>&copy; EL LOCO BURRITO. ALL RIGHTS RESERVED. WILLIAMSBURG BK.</p>
+                <div class="flex gap-4">
+                    <span class="bg-loco-black text-loco-cream px-2 py-1">CASH</span>
+                    <span class="bg-loco-black text-loco-cream px-2 py-1">CARD</span>
+                    <span class="bg-loco-black text-loco-cream px-2 py-1">HUNGER</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        var nav = document.getElementById('punk-nav');
+        var toggle = document.getElementById('nav-toggle');
+        var links = document.getElementById('nav-links');
+        var navAnchors = links.querySelectorAll('a');
+        var sections = document.querySelectorAll('#home, #menu, #about, #find-us');
+        var showThreshold = 200;
+
+        // Show/hide nav on scroll
+        var lastY = 0;
+        window.addEventListener('scroll', function() {
+            var y = window.scrollY;
+            if (y > showThreshold) {
+                nav.classList.add('visible');
+            } else {
+                nav.classList.remove('visible');
+            }
+            lastY = y;
+
+            // Active link tracking
+            var current = '';
+            sections.forEach(function(s) {
+                if (s.getBoundingClientRect().top <= 120) {
+                    current = s.id;
+                }
+            });
+            navAnchors.forEach(function(a) {
+                a.classList.toggle('active-link', a.getAttribute('href') === '#' + current);
+            });
+        }, { passive: true });
+
+        // Mobile toggle
+        toggle.addEventListener('click', function() {
+            var open = links.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open);
+            toggle.textContent = open ? 'X' : 'Menu';
+        });
+
+        // Close mobile menu on link click
+        navAnchors.forEach(function(a) {
+            a.addEventListener('click', function() {
+                links.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.textContent = 'Menu';
+            });
+        });
+    })();
+    </script>
+</body>
+</html>

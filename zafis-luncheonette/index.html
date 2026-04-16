@@ -1,0 +1,263 @@
+<!--
+  aidesigner_run_id: 727f26e0-6fef-454b-8dbc-2215f621a4bb
+  aesthetic_dna: Vintage NYC Luncheonette
+  palette: Formica Cream (#F4EFE6), Ketchup Red (#D32726), Diner Black (#1C1A17), Chrome Grey (#9CA3AF)
+-->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zafis Luncheonette | 500 Grand St, NYC</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Ultra&family=Zilla+Slab:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: { DEFAULT: '#F4EFE6', alt: '#EBE3D5' },
+                        ketchup: '#D32726',
+                        dinerblack: '#1C1A17',
+                        chrome: '#9CA3AF'
+                    },
+                    fontFamily: {
+                        display: ['Ultra', 'serif'],
+                        serif: ['"Zilla Slab"', 'serif'],
+                        sans: ['Barlow', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'hard': '4px 4px 0px 0px rgba(28,26,23,1)',
+                        'hard-red': '4px 4px 0px 0px rgba(211,39,38,1)',
+                        'hard-sm': '2px 2px 0px 0px rgba(28,26,23,1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #F4EFE6; border-left: 2px solid #1C1A17; }
+        ::-webkit-scrollbar-thumb { background: #D32726; border-top: 2px solid #1C1A17; border-bottom: 2px solid #1C1A17; }
+        ::selection { background-color: #D32726; color: #F4EFE6; }
+        html { scroll-padding-top: 5rem; }
+        .menu-leader { border-bottom: 3px dotted #9ca3af; position: relative; top: -6px; }
+        .texture-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3h1v1H1V3zm2-2h1v1H3V1z' fill='%231C1A17' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-cream text-dinerblack font-sans antialiased texture-bg flex flex-col min-h-screen">
+
+    <nav class="fixed top-0 w-full z-50 bg-cream border-b-4 border-dinerblack transition-all duration-300 shadow-md">
+        <div class="h-2 w-full bg-ketchup"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#home" class="font-display text-2xl tracking-tighter text-dinerblack hover:text-ketchup transition-colors uppercase leading-none mt-1">
+                        Zafis <span class="text-ketchup">Luncheonette</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="font-serif font-bold text-lg text-dinerblack hover:text-ketchup border-b-2 border-transparent hover:border-ketchup transition-all">Home</a>
+                    <a href="#about" class="font-serif font-bold text-lg text-dinerblack hover:text-ketchup border-b-2 border-transparent hover:border-ketchup transition-all">About</a>
+                    <a href="#menu" class="font-serif font-bold text-lg text-dinerblack hover:text-ketchup border-b-2 border-transparent hover:border-ketchup transition-all">Menu</a>
+                    <a href="#find-us" class="font-serif font-bold text-lg text-dinerblack hover:text-ketchup border-b-2 border-transparent hover:border-ketchup transition-all">Find Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <a href="#menu" class="bg-ketchup text-cream font-bold py-1 px-3 border-2 border-dinerblack shadow-hard-sm uppercase text-sm">Menu</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex flex-col">
+
+        <section id="home" class="relative pt-24 pb-12 lg:pt-32 lg:pb-20 border-b-8 border-dinerblack bg-cream flex-shrink-0">
+            <div class="absolute top-16 left-0 w-8 h-8 border-r-4 border-b-4 border-dinerblack"></div>
+            <div class="absolute top-16 right-0 w-8 h-8 border-l-4 border-b-4 border-dinerblack"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div class="lg:col-span-7 flex flex-col justify-center space-y-6 lg:space-y-8 relative z-10">
+                    <div class="inline-flex items-center space-x-2 bg-dinerblack text-cream px-3 py-1 w-max font-sans font-bold uppercase tracking-widest text-xs border border-dinerblack">
+                        <i class="ph-fill ph-map-pin"></i>
+                        <span>Lower East Side, NY</span>
+                    </div>
+                    <h1 class="font-display text-6xl sm:text-7xl lg:text-8xl xl:text-9xl tracking-tight leading-[0.85] text-dinerblack uppercase break-words">
+                        40 Years <br>
+                        <span class="text-ketchup inline-block transform -rotate-2 origin-left mt-2 lg:mt-4">On Grand</span> <br>
+                        Street.
+                    </h1>
+                    <p class="font-serif text-xl sm:text-2xl text-dinerblack font-medium max-w-xl border-l-4 border-ketchup pl-4">
+                        Counter seats, formica, strong coffee. The LES staple for eggs and sandwiches since the 1980s.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#menu" class="bg-ketchup text-cream font-sans font-bold text-lg uppercase tracking-wider py-3 px-8 border-2 border-dinerblack shadow-hard hover:translate-y-1 hover:shadow-none transition-all">View Menu</a>
+                        <a href="tel:2125332415" class="bg-cream text-dinerblack font-sans font-bold text-lg uppercase tracking-wider py-3 px-8 border-2 border-dinerblack shadow-hard flex items-center gap-2 hover:bg-dinerblack hover:text-cream transition-colors">
+                            <i class="ph-fill ph-phone pb-0.5"></i> 212-533-2415
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative mt-8 lg:mt-0">
+                    <div class="relative border-4 border-dinerblack shadow-hard z-0 w-full aspect-[4/5] overflow-hidden bg-dinerblack">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=800" alt="Classic diner counter" class="w-full h-full object-cover opacity-90 saturate-50 contrast-125 mix-blend-luminosity">
+                        <div class="absolute inset-0 bg-ketchup mix-blend-multiply opacity-20"></div>
+                    </div>
+                    <div class="absolute -bottom-6 -left-4 lg:-bottom-12 lg:-left-16 right-4 sm:right-auto z-20 bg-cream border-2 border-dashed border-ketchup p-5 sm:p-6 shadow-hard rotate-1 max-w-sm">
+                        <div class="flex justify-between items-start mb-3 border-b-2 border-dinerblack pb-2">
+                            <span class="font-sans font-bold text-sm uppercase text-ketchup">Guest Check</span>
+                            <span class="font-mono text-xs text-chrome">#04815</span>
+                        </div>
+                        <p class="font-serif text-lg italic leading-snug text-dinerblack mb-4">"Great sandwich choices, well-prepared food, friendly staff, very low prices — a proper old-school NYC luncheonette."</p>
+                        <div class="flex items-center gap-2">
+                            <div class="flex text-ketchup">
+                                <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                            </div>
+                            <span class="font-sans font-bold text-xs uppercase tracking-wider text-chrome">— Local Guide</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-16 lg:py-24 border-b-8 border-dinerblack bg-cream-alt relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 font-display text-[20rem] leading-none text-dinerblack opacity-5 select-none pointer-events-none">EST. 1980s</div>
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+                    <div class="md:col-span-4 flex flex-col items-start pr-8 md:border-r-4 border-dinerblack">
+                        <h2 class="font-display text-4xl sm:text-5xl uppercase text-dinerblack leading-tight mb-4">Genuine.<br>Not Gentrified.</h2>
+                        <hr class="w-full border-t-4 border-ketchup mb-4">
+                        <p class="font-sans font-bold text-sm uppercase tracking-widest text-chrome">Since the 80s</p>
+                    </div>
+                    <div class="md:col-span-8 flex flex-col justify-center">
+                        <p class="font-serif text-2xl lg:text-3xl leading-relaxed text-dinerblack font-medium">
+                            Zafis is a rarity. We don't do "artisanal" or "curated." We do eggs, fast and right.
+                            We do fresh coffee in heavy mugs. For over 40 years, 500 Grand Street has been
+                            the reliable, cheap, and fast heartbeat of the Lower East Side morning rush.
+                        </p>
+                        <p class="font-sans text-lg mt-6 text-dinerblack/80 font-medium">Grab a stool at the formica counter. You're in good company.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="py-16 lg:py-24 bg-cream border-b-8 border-dinerblack">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 lg:mb-16">
+                    <h2 class="font-display text-5xl sm:text-6xl uppercase text-dinerblack inline-block relative">
+                        <span class="absolute top-1/2 -left-12 sm:-left-24 w-8 sm:w-16 border-t-4 border-dinerblack transform -translate-y-1/2"></span>
+                        Our Menu
+                        <span class="absolute top-1/2 -right-12 sm:-right-24 w-8 sm:w-16 border-t-4 border-dinerblack transform -translate-y-1/2"></span>
+                    </h2>
+                    <p class="mt-4 font-sans font-bold uppercase tracking-widest text-ketchup">Served Fast & Hot</p>
+                </div>
+
+                <div class="bg-cream border-4 border-dinerblack shadow-hard-red p-6 sm:p-10 lg:p-12 relative">
+                    <div class="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-ketchup"></div>
+                    <div class="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-ketchup"></div>
+                    <div class="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-ketchup"></div>
+                    <div class="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-ketchup"></div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+                        <div>
+                            <div class="mb-10">
+                                <h3 class="font-serif font-bold text-3xl uppercase border-b-4 border-dinerblack pb-2 mb-6 text-dinerblack flex justify-between items-baseline">
+                                    Breakfast <span class="font-sans text-sm font-normal tracking-wide text-chrome capitalize">Served All Day</span>
+                                </h3>
+                                <ul class="space-y-4 font-sans text-lg text-dinerblack">
+                                    <li class="flex items-baseline mb-1"><span class="font-bold relative z-10 bg-cream pr-2">Two Eggs, Any Style</span><span class="flex-grow menu-leader"></span><span class="font-bold relative z-10 bg-cream pl-2">$5.50</span></li>
+                                    <li class="flex items-baseline mb-1"><span class="font-bold relative z-10 bg-cream pr-2">Bacon, Egg & Cheese on Roll</span><span class="flex-grow menu-leader"></span><span class="font-bold relative z-10 bg-cream pl-2">$6.00</span></li>
+                                    <li class="flex items-baseline mb-1"><span class="font-bold relative z-10 bg-cream pr-2">Western Omelette</span><span class="flex-grow menu-leader"></span><span class="font-bold relative z-10 bg-cream pl-2">$8.50</span></li>
+                                    <li class="flex items-baseline mb-1"><span class="font-bold relative z-10 bg-cream pr-2">Stack of Pancakes (3)</span><span class="flex-grow menu-leader"></span><span class="font-bold relative z-10 bg-cream pl-2">$7.00</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-serif font-bold text-3xl uppercase border-b-4 border-dinerblack pb-2 mb-6 text-dinerblack flex justify-between items-baseline">
+                                    Plates <span class="font-sans text-sm font-normal tracking-wide text-chrome capitalize">With Fries</span>
+                                </h3>
+                                <ul class="space-y-4 font-sans text-lg text-dinerblack">
+                                    <li class="flex flex-col mb-1"><div class="flex items-baseline"><span class="font-bold relative z-10 bg-cream pr-2">Cheeseburger Deluxe</span><span class="flex-grow menu-leader"></span><span class="font-bold relative z-10 bg-cream pl-2">$11.00</span></div><span class="text-sm font-medium text-dinerblack/70 mt-1">Lettuce, tomato, pickle, fries.</span></li>
+                                    <li class="flex flex-col mb-1"><div class="flex items-baseline"><span class="font-bold relative z-10 bg-cream pr-2">Chicken Fingers (4 pc)</span><span class="flex-grow menu-leader"></span><span class="font-bold relative z-10 bg-cream pl-2">$10.50</span></div></li>
+                                    <li class="flex flex-col mb-1"><div class="flex items-baseline"><span class="font-bold relative z-10 bg-cream pr-2">Grilled Chicken Platter</span><span class="flex-grow menu-leader"></span><span class="font-bold relative z-10 bg-cream pl-2">$12.00</span></div></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="mb-10">
+                                <h3 class="font-serif font-bold text-3xl uppercase border-b-4 border-dinerblack pb-2 mb-6 text-dinerblack">Sandwiches</h3>
+                                <ul class="space-y-4 font-sans text-lg text-dinerblack">
+                                    <li class="flex items-baseline mb-1"><span class="font-bold relative z-10 bg-cream pr-2 text-ketchup">Pastrami on Rye</span><span class="flex-grow menu-leader"></span><span class="font-bold relative z-10 bg-cream pl-2">$10.50</span></li>
+                                    <li class="flex items-baseline mb-1"><span class="font-bold relative z-10 bg-cream pr-2">Turkey Club</span><span class="flex-grow menu-leader"></span><span class="font-bold relative z-10 bg-cream pl-2">$9.50</span></li>
+                                    <li class="flex items-baseline mb-1"><span class="font-bold relative z-10 bg-cream pr-2">BLT</span><span class="flex-grow menu-leader"></span><span class="font-bold relative z-10 bg-cream pl-2">$7.00</span></li>
+                                    <li class="flex items-baseline mb-1"><span class="font-bold relative z-10 bg-cream pr-2">Tuna Salad</span><span class="flex-grow menu-leader"></span><span class="font-bold relative z-10 bg-cream pl-2">$8.00</span></li>
+                                    <li class="flex items-baseline mb-1"><span class="font-bold relative z-10 bg-cream pr-2">Grilled Cheese</span><span class="flex-grow menu-leader"></span><span class="font-bold relative z-10 bg-cream pl-2">$5.00</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-serif font-bold text-3xl uppercase border-b-4 border-dinerblack pb-2 mb-6 text-dinerblack">Drinks</h3>
+                                <div class="grid grid-cols-2 gap-x-6 gap-y-4 font-sans text-lg text-dinerblack">
+                                    <div class="flex justify-between items-baseline border-b border-dotted border-chrome pb-1"><span class="font-bold">Hot Coffee</span><span class="font-bold">$2.00</span></div>
+                                    <div class="flex justify-between items-baseline border-b border-dotted border-chrome pb-1"><span class="font-bold">Iced Coffee</span><span class="font-bold">$3.00</span></div>
+                                    <div class="flex justify-between items-baseline border-b border-dotted border-chrome pb-1"><span class="font-bold">Tea</span><span class="font-bold">$2.00</span></div>
+                                    <div class="flex justify-between items-baseline border-b border-dotted border-chrome pb-1"><span class="font-bold">Orange Juice</span><span class="font-bold">$3.00</span></div>
+                                    <div class="flex justify-between items-baseline border-b border-dotted border-chrome pb-1"><span class="font-bold text-ketchup">Egg Cream</span><span class="font-bold">$3.50</span></div>
+                                    <div class="flex justify-between items-baseline border-b border-dotted border-chrome pb-1"><span class="font-bold">Can of Soda</span><span class="font-bold">$1.50</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-14 pt-8 border-t-8 border-double border-dinerblack text-center">
+                        <p class="font-serif text-lg mb-6 italic text-dinerblack/80">These are just the classics. We've got a lot more on the griddle.</p>
+                        <a href="https://menupages.com/zafis-luncheonette/500-grand-st-new-york" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-dinerblack text-cream font-sans font-bold text-xl uppercase tracking-wider py-4 px-10 border-2 border-dinerblack shadow-hard-red hover:bg-ketchup hover:border-ketchup hover:shadow-hard transition-all group">
+                            See Full Menu Online <i class="ph-bold ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="find-us" class="bg-ketchup text-cream relative overflow-hidden flex-shrink-0">
+            <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: linear-gradient(#1C1A17 1px, transparent 1px), linear-gradient(90deg, #1C1A17 1px, transparent 1px); background-size: 40px 40px;"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div class="lg:col-span-2 border-b-4 lg:border-b-0 lg:border-r-4 border-cream pb-12 lg:pb-0 lg:pr-12 flex flex-col justify-center">
+                    <h2 class="font-display text-6xl sm:text-7xl lg:text-8xl leading-none uppercase tracking-tighter mb-6 text-cream drop-shadow-[4px_4px_0_#1C1A17]">500 <br> Grand <br> St.</h2>
+                    <p class="font-serif text-2xl sm:text-3xl font-bold bg-dinerblack text-cream px-4 py-2 inline-block w-max">New York, NY 10002</p>
+                </div>
+                <div class="flex flex-col justify-center gap-10">
+                    <div>
+                        <h3 class="font-sans font-bold text-2xl uppercase tracking-widest border-b-2 border-cream pb-2 mb-4 flex items-center gap-3"><i class="ph-fill ph-clock"></i> Hours</h3>
+                        <div class="font-serif text-xl space-y-2">
+                            <div class="flex justify-between"><span>Monday - Saturday</span><strong>6:00 AM - 5:00 PM</strong></div>
+                            <div class="flex justify-between text-cream/80"><span>Sunday</span><strong>8:00 AM - 5:00 PM</strong></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-sans font-bold text-2xl uppercase tracking-widest border-b-2 border-cream pb-2 mb-4 flex items-center gap-3"><i class="ph-fill ph-phone-call"></i> Call In Orders</h3>
+                        <a href="tel:2125332415" class="font-display text-4xl sm:text-5xl hover:opacity-80 transition-opacity">212-533-2415</a>
+                    </div>
+                    <div>
+                        <h3 class="font-sans font-bold text-2xl uppercase tracking-widest border-b-2 border-cream pb-2 mb-4 flex items-center gap-3"><i class="ph-fill ph-map-pin"></i> Directions</h3>
+                        <a href="https://maps.google.com/?q=500+Grand+St,+New+York,+NY+10002" target="_blank" rel="noopener noreferrer" class="font-serif font-bold text-xl hover:opacity-80 transition-opacity underline">Get Directions &rarr;</a>
+                    </div>
+                    <div>
+                        <h3 class="font-sans font-bold text-2xl uppercase tracking-widest border-b-2 border-cream pb-2 mb-4 flex items-center gap-3"><i class="ph-fill ph-facebook-logo"></i> Follow Us</h3>
+                        <a href="https://facebook.com/zafisluncheonette" target="_blank" rel="noopener noreferrer" class="font-serif font-bold text-xl hover:opacity-80 transition-opacity underline">Facebook &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-dinerblack text-cream/70 py-4 font-sans font-medium text-sm text-center border-t-4 border-cream">
+                &copy; <script>document.write(new Date().getFullYear())</script> Zafis Luncheonette. An old-school institution. Support local down on the Lower East Side.
+            </div>
+        </section>
+    </main>
+</body>
+</html>

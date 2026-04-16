@@ -1,0 +1,258 @@
+<!--
+  aidesigner_run_id: 01b63de0-2aef-4f8b-9e34-de0a6ef00ba6
+  aesthetic_dna: Editorial elegance meets rich moody neighborhood bistro
+  palette: Ivory base, Deep Jade core, Deep Burgundy grounding, Warm Gold highlights
+-->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunan Park | 610 Amsterdam Ave</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ivory: { 400: '#ffffff', 500: '#fdfbf7', 600: '#f0ebd8', 800: '#dcd5c0' },
+                        jade: { 600: '#1e6658', 700: '#175246', 800: '#113f36', 900: '#0a2620' },
+                        burgundy: { 700: '#5e2323', 800: '#4a1c1c', 900: '#2a0f0f' },
+                        gold: { 400: '#e5c158', 500: '#d4af37', 600: '#b08d20' }
+                    },
+                    fontFamily: { serif: ['"Cormorant Garamond"', 'serif'], sans: ['"Work Sans"', 'sans-serif'] },
+                    backgroundImage: {
+                        'linen': 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'4\' height=\'4\' viewBox=\'0 0 4 4\'%3E%3Cpath fill=\'%23000000\' fill-opacity=\'0.03\' d=\'M1 3h1v1H1V3zm2-2h1v1H3V1z\'%3E%3C/path%3E%3C/svg%3E")',
+                        'jade-linen': 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'4\' height=\'4\' viewBox=\'0 0 4 4\'%3E%3Cpath fill=\'%23ffffff\' fill-opacity=\'0.015\' d=\'M1 3h1v1H1V3zm2-2h1v1H3V1z\'%3E%3C/path%3E%3C/svg%3E")'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::selection { background: #d4af37; color: #113f36; }
+        html { scroll-padding-top: 7rem; }
+        .text-balanced { text-wrap: balance; }
+        .arch-clip { clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%); }
+        .soft-arch { border-top-left-radius: 999px; border-top-right-radius: 999px; }
+        .menu-leader { flex-grow: 1; border-bottom: 1px dotted #dcd5c0; margin: 0 12px 6px 12px; opacity: 0.6; transition: opacity 0.3s ease; }
+        .menu-item:hover .menu-leader { opacity: 1; border-bottom: 1px dotted #d4af37; }
+        .menu-item:hover .menu-title { color: #113f36; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fdfbf7; }
+        ::-webkit-scrollbar-thumb { background: #113f36; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #175246; }
+        .brush-mark { position: relative; display: inline-block; }
+        .brush-mark::after { content: ''; position: absolute; bottom: 10%; left: -5%; width: 110%; height: 4px; background: #d4af37; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; transform: rotate(-2deg); opacity: 0.8; pointer-events: none; }
+    </style>
+</head>
+<body class="bg-ivory-500 font-sans text-burgundy-900 antialiased bg-linen selection:bg-gold-500 selection:text-white">
+
+    <nav class="fixed w-full top-0 z-50 bg-ivory-500/90 backdrop-blur-md border-b border-ivory-800/30 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="#" class="group flex items-center gap-3">
+                <span class="text-3xl font-serif font-bold text-jade-800 tracking-tight brush-mark">Hunan Park</span>
+            </a>
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#story" class="text-sm tracking-widest uppercase font-medium text-burgundy-900/70 hover:text-jade-800 transition-colors">Our Story</a>
+                <a href="#menu" class="text-sm tracking-widest uppercase font-medium text-burgundy-900/70 hover:text-jade-800 transition-colors">Menu</a>
+                <a href="#lunch" class="text-sm tracking-widest uppercase font-medium text-gold-600 hover:text-gold-500 transition-colors">Lunch Spec.</a>
+                <a href="#visit" class="text-sm tracking-widest uppercase font-medium text-burgundy-900/70 hover:text-jade-800 transition-colors">Find Us</a>
+            </div>
+            <a href="tel:2122226511" class="hidden md:flex items-center gap-2 bg-jade-800 text-ivory-500 px-6 py-3 hover:bg-jade-700 transition-colors duration-300 border border-jade-800">
+                <i class="ph ph-phone-call text-lg text-gold-500"></i>
+                <span class="font-medium tracking-wide">212-222-6511</span>
+            </a>
+            <button class="md:hidden text-jade-800 text-3xl"><i class="ph ph-list"></i></button>
+        </div>
+    </nav>
+
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex flex-col justify-center min-h-[95vh]">
+        <div class="absolute top-0 right-0 w-[45vw] h-full bg-jade-800 jade-linen -z-10 arch-clip hidden lg:block"></div>
+        <div class="absolute top-20 right-20 w-[40vw] h-[80vh] bg-burgundy-900 -z-20 arch-clip opacity-20 hidden lg:block"></div>
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 z-10 flex flex-col items-start">
+                <div class="inline-flex items-center gap-3 px-4 py-1.5 border border-gold-500/50 bg-ivory-400 mb-8 rounded-sm">
+                    <span class="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+                    <span class="text-xs font-bold tracking-[0.2em] uppercase text-jade-800">Now Open at Our New Home</span>
+                </div>
+                <h1 class="text-6xl md:text-8xl lg:text-[7rem] font-serif leading-[0.9] text-jade-900 tracking-tighter mb-8">
+                    Columbus 721 <br>
+                    <span class="text-burgundy-900 flex items-center gap-4 mt-2">
+                        <i class="ph ph-arrow-right font-light text-gold-500"></i>
+                        610 Amsterdam.
+                    </span>
+                </h1>
+                <p class="text-lg md:text-xl text-burgundy-800/80 font-light max-w-xl leading-relaxed mb-10 text-balanced">The Upper West Side neighborhood institution you know and love hasn't gone far. Same massive portions, same family, five authentic cuisines—just standing proud at a new corner.</p>
+                <div class="flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
+                    <a href="tel:2122226511" class="bg-jade-800 text-ivory-500 px-8 py-4 flex items-center justify-center gap-3 hover:bg-jade-700 transition-all font-medium tracking-wide shadow-xl shadow-jade-900/20 group">
+                        <i class="ph ph-phone text-xl text-gold-500 group-hover:rotate-12 transition-transform"></i>Call for Pickup or Delivery
+                    </a>
+                    <div class="flex items-center justify-center px-6 py-4 bg-transparent border border-jade-800/20 text-jade-800 text-sm font-medium tracking-wide">
+                        <i class="ph ph-prohibit text-burgundy-700 mr-2 text-lg"></i> No Third-Party Apps
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-5 relative mt-12 lg:mt-0">
+                <div class="aspect-[4/5] w-full relative soft-arch overflow-hidden border-8 border-ivory-500 shadow-2xl shadow-burgundy-900/10">
+                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80" alt="Elegant dining setting" class="object-cover w-full h-full scale-105 hover:scale-100 transition-transform duration-1000 ease-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-jade-900/60 to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 right-8">
+                        <div class="bg-ivory-500/95 backdrop-blur px-6 py-4 border-l-4 border-gold-500 shadow-lg">
+                            <p class="text-xs uppercase tracking-[0.1em] text-burgundy-900/60 mb-1">Find Us Between 89th & 90th</p>
+                            <p class="font-serif text-2xl text-jade-900">610 Amsterdam Ave.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -top-6 -right-6 w-32 h-32 bg-gold-500 rounded-full flex items-center justify-center shadow-lg transform rotate-12">
+                    <div class="w-28 h-28 rounded-full border border-ivory-500/30 flex flex-col items-center justify-center text-center p-2">
+                        <span class="font-serif text-ivory-500 text-[10px] uppercase tracking-widest leading-tight w-full border-b border-ivory-500/30 pb-1 mb-1">Serving UWS</span>
+                        <span class="font-serif text-burgundy-900 text-2xl leading-none">Daily</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="story" class="py-24 bg-jade-800 bg-jade-linen relative text-ivory-500">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold-500/30 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-serif text-gold-500 mb-6">A Family Tradition, Five Cuisines Deep.</h2>
+                    <p class="text-ivory-600 font-light text-lg mb-6 leading-relaxed">Hunan Park is not your typical neighborhood takeout. We've spent years perfecting an expansive menu that honors the distinctive flavors of Chinese, Hunan, Szechuan, Thai, and Sambal (Indonesian) traditions.</p>
+                    <p class="text-ivory-600 font-light text-lg mb-8 leading-relaxed">When we made the move from Columbus Avenue, we brought everything with us—the family, the woks, the dedication to huge portions at honest prices, and a grown-up dining experience that respects our regulars.</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-y-4 gap-x-8 border-t border-jade-600 pt-8">
+                        <div class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-gold-500"></i> <span class="tracking-wide text-sm font-medium">Chinese</span></div>
+                        <div class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-gold-500"></i> <span class="tracking-wide text-sm font-medium">Hunan</span></div>
+                        <div class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-gold-500"></i> <span class="tracking-wide text-sm font-medium">Szechuan</span></div>
+                        <div class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-gold-500"></i> <span class="tracking-wide text-sm font-medium">Thai</span></div>
+                        <div class="flex items-center gap-2"><i class="ph-fill ph-check-circle text-gold-500"></i> <span class="tracking-wide text-sm font-medium">Sambal</span></div>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gold-500 translate-x-4 max-w-sm ml-auto translate-y-4"></div>
+                    <div class="relative bg-ivory-500 max-w-sm ml-auto p-8 lg:p-10 text-burgundy-900 border border-ivory-600 transition-transform transform group-hover:-translate-y-1 group-hover:-translate-x-1 duration-300">
+                        <div class="text-xs uppercase tracking-[0.2em] text-jade-700 font-bold mb-4">The Signature Homage</div>
+                        <h3 class="text-4xl font-serif leading-none mb-2">C20</h3>
+                        <h4 class="text-2xl font-serif text-burgundy-800 border-b border-ivory-800 pb-4 mb-4">"Columbus 721"</h4>
+                        <p class="text-sm font-light text-burgundy-900/80 mb-6 leading-relaxed">A dish so beloved at our old location, we named it after the address to ensure it never got left behind. A masterful blend of textures and deeply savory glaze.</p>
+                        <div class="flex justify-between items-end">
+                            <span class="text-sm uppercase tracking-widest text-jade-800 font-medium">Chef's Special</span>
+                            <span class="text-2xl font-serif text-jade-900">$15.55</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-24 bg-ivory-500 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-sm font-bold tracking-[0.2em] text-gold-600 uppercase mb-3 block">From the Kitchen</span>
+                <h2 class="text-5xl md:text-6xl font-serif text-jade-900">Neighborhood Classics</h2>
+                <div class="w-24 h-px bg-burgundy-900 mx-auto mt-6"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-x-16 gap-y-16 lg:gap-y-20">
+                <div>
+                    <h3 class="text-2xl font-serif text-burgundy-900 border-b-2 border-jade-800 pb-2 mb-6 flex items-center justify-between"><span>House Specialties</span></h3>
+                    <div class="flex flex-col gap-4">
+                        <div class="menu-item flex items-end group cursor-default"><div class="pb-1"><span class="menu-title font-medium text-lg text-burgundy-900 transition-colors">Peking Duck (Whole)</span></div><div class="menu-leader"></div><div class="pb-1"><span class="font-serif text-lg text-jade-800">$38.00</span></div></div>
+                        <div class="menu-item flex items-end group cursor-default"><div class="pb-1"><span class="menu-title font-medium text-lg text-burgundy-900 transition-colors">C20 "Columbus 721"</span></div><div class="menu-leader"></div><div class="pb-1"><span class="font-serif text-lg text-jade-800">$15.55</span></div></div>
+                        <div class="menu-item flex items-end group cursor-default"><div class="pb-1"><span class="menu-title font-medium text-lg text-burgundy-900 transition-colors">General Tso's Chicken</span></div><div class="menu-leader"></div><div class="pb-1"><span class="font-serif text-lg text-jade-800">$13.95</span></div></div>
+                        <div class="menu-item flex items-end group cursor-default"><div class="pb-1"><span class="menu-title font-medium text-lg text-burgundy-900 transition-colors">Tangerine Beef</span></div><div class="menu-leader"></div><div class="pb-1"><span class="font-serif text-lg text-jade-800">$15.50</span></div></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-serif text-burgundy-900 border-b-2 border-jade-800 pb-2 mb-6 flex items-center justify-between"><span>Pan-Asian Masters</span></h3>
+                    <div class="flex flex-col gap-4">
+                        <div class="menu-item flex items-end group cursor-default"><div class="pb-1"><span class="menu-title font-medium text-lg text-burgundy-900 transition-colors">Pad Thai</span><span class="block text-xs uppercase tracking-widest text-burgundy-700/60 mt-0.5">Thai</span></div><div class="menu-leader"></div><div class="pb-1"><span class="font-serif text-lg text-jade-800">from $11.70</span></div></div>
+                        <div class="menu-item flex items-end group cursor-default"><div class="pb-1"><span class="menu-title font-medium text-lg text-burgundy-900 transition-colors">Sambal Prawn</span><span class="block text-xs uppercase tracking-widest text-burgundy-700/60 mt-0.5">Indonesian</span></div><div class="menu-leader"></div><div class="pb-1"><span class="font-serif text-lg text-jade-800">$16.50</span></div></div>
+                        <div class="menu-item flex items-end group cursor-default"><div class="pb-1"><span class="menu-title font-medium text-lg text-burgundy-900 transition-colors">Hunan Pork</span><span class="block text-xs uppercase tracking-widest text-burgundy-700/60 mt-0.5">Hunan</span></div><div class="menu-leader"></div><div class="pb-1"><span class="font-serif text-lg text-jade-800">$12.00</span></div></div>
+                        <div class="menu-item flex items-end group cursor-default"><div class="pb-1"><span class="menu-title font-medium text-lg text-burgundy-900 transition-colors">Mapo Tofu</span><span class="block text-xs uppercase tracking-widest text-burgundy-700/60 mt-0.5">Szechuan</span></div><div class="menu-leader"></div><div class="pb-1"><span class="font-serif text-lg text-jade-800">$10.00</span></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 flex justify-center">
+                <p class="text-jade-800 font-medium bg-ivory-600/50 px-6 py-3 border border-ivory-800 flex items-center gap-3">
+                    <i class="ph ph-info text-xl text-gold-600"></i>This is just a selection. Call us for our massive full menu.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="lunch" class="py-20 bg-burgundy-900 relative overflow-hidden">
+        <div class="absolute -right-20 top-0 w-96 h-96 bg-burgundy-800 rounded-full blur-3xl opacity-50"></div>
+        <div class="absolute -left-20 bottom-0 w-96 h-96 bg-jade-900 rounded-full blur-3xl opacity-50"></div>
+        <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-4xl md:text-6xl font-serif text-gold-400 mb-6">The Legendary Lunch Special</h2>
+            <p class="text-xl md:text-2xl text-ivory-500 font-light max-w-2xl mx-auto mb-10 text-balanced">Generous portions. Unbeatable value. Feeding the Upper West Side daily.</p>
+            <div class="inline-block bg-ivory-500 px-8 py-6 shadow-2xl shadow-black/40 border border-gold-600/30 transform hover:-translate-y-1 transition-transform">
+                <div class="text-sm uppercase tracking-widest font-bold text-burgundy-900 mb-2">Daily Lunch Specials</div>
+                <div class="flex items-center justify-center gap-4 text-jade-900">
+                    <span class="text-5xl font-serif">$8.00</span>
+                    <span class="text-2xl font-light">-</span>
+                    <span class="text-5xl font-serif">$8.75</span>
+                </div>
+                <div class="mt-4 pt-4 border-t border-ivory-800 text-sm font-medium text-burgundy-900/80">Includes Entree, Rice, and choice of Soup or Egg Roll.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visit" class="bg-jade-900 text-ivory-500 border-t-8 border-gold-500">
+        <div class="max-w-7xl mx-auto px-6 py-20 lg:py-24">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-5xl font-serif text-ivory-500 mb-8 border-b border-jade-700 pb-6">Find Your Table</h2>
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4">
+                                <i class="ph-fill ph-map-pin text-3xl text-gold-500 mt-1"></i>
+                                <div>
+                                    <h4 class="text-xl font-medium mb-1">610 Amsterdam Ave.</h4>
+                                    <p class="text-ivory-500/80 font-light leading-relaxed">Between 89th & 90th Street<br>New York, NY 10024</p>
+                                    <p class="text-sm italic text-ivory-500/50 mt-2">(Formerly located at 721 Columbus Ave)</p>
+                                    <a href="https://maps.google.com/?q=610+Amsterdam+Ave,+New+York,+NY+10024" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-3 text-gold-400 hover:text-gold-500 transition-colors font-medium text-sm tracking-wide uppercase"><i class="ph ph-map-pin text-lg"></i> Get Directions &rarr;</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <i class="ph-fill ph-clock text-3xl text-gold-500 mt-1"></i>
+                                <div>
+                                    <h4 class="text-xl font-medium mb-1">Hours of Operation</h4>
+                                    <ul class="text-ivory-500/80 font-light space-y-1">
+                                        <li class="flex justify-between w-48"><span>Mon - Sun:</span><span>11:00 AM - 9:30 PM</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-16 bg-jade-800/50 p-8 border border-jade-700">
+                        <p class="text-sm uppercase tracking-[0.2em] text-gold-400 font-bold mb-3">Place An Order</p>
+                        <a href="tel:2122226511" class="text-4xl md:text-5xl font-serif text-ivory-400 hover:text-gold-500 transition-colors block mb-4">212-222-6511</a>
+                        <p class="text-sm font-medium text-gold-400 bg-burgundy-900/50 inline-block px-3 py-1 mt-2">Please Note: We do not accept online orders. Call us directly.</p>
+                    </div>
+                </div>
+                <div class="relative h-full min-h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80" alt="Restaurant facade on Amsterdam Ave" class="w-full h-full object-cover filter grayscale-[30%] sepia-[20%]">
+                    <div class="absolute inset-0 bg-jade-900/30"></div>
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+                        <div class="w-20 h-20 bg-gold-500/90 rounded-full flex items-center justify-center shadow-2xl backdrop-blur-sm animate-bounce" style="animation-duration: 3s;">
+                            <i class="ph-fill ph-map-pin text-4xl text-burgundy-900"></i>
+                        </div>
+                        <div class="w-12 h-3 bg-black/40 blur-sm rounded-[100%] mt-2"></div>
+                    </div>
+                    <div class="absolute inset-4 border border-ivory-500/20 pointer-events-none mix-blend-overlay"></div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-jade-800 bg-jade-900 py-6 text-center">
+            <p class="font-serif italic text-ivory-500/50">Hunan Park — A New York Classic.</p>
+        </div>
+    </section>
+</body>
+</html>
