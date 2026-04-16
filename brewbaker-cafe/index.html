@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brewbaker Cafe | Dublin's Best-Kept Sandwich Secret</title>
+    <meta name="description" content="Brewbaker Cafe: A 30-year-old Dublin city-centre institution on South Frederick Street. Homemade, owner-run, serving Dublin for nearly 30 years.">
+
+    <!--
+    aesthetic_dna: Irish Georgian Heritage / Side-street Institution / Tactile Signwriting
+    ui_paradigm: Immersive vertical scroll, solid color blocking with heavy "pub door" framing and offset layers.
+    palette_choice: Oat cream base, Forest Green primary, Butter Yellow accent, Ink Black typography.
+    -->
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        oat: '#F4EEE6',
+                        forest: '#183F2A',
+                        butter: '#FBE37B',
+                        ink: '#161616',
+                        'forest-light': '#24593E'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'heritage': '6px 6px 0px 0px rgba(24, 63, 42, 1)',
+                        'heritage-butter': '6px 6px 0px 0px rgba(251, 227, 123, 1)',
+                        'inner-wood': 'inset 0px 0px 20px rgba(0,0,0,0.4)',
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --color-oat: #F4EEE6;
+            --color-forest: #183F2A;
+            --color-butter: #FBE37B;
+            --color-ink: #161616;
+        }
+
+        body {
+            background-color: var(--color-oat);
+            color: var(--color-ink);
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-oat);
+            border-left: 1px solid var(--color-forest);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-forest);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #112d1e;
+        }
+
+        ::selection {
+            background-color: var(--color-butter);
+            color: var(--color-forest);
+        }
+
+        .pub-door-trim {
+            position: relative;
+            border: 2px solid var(--color-forest);
+        }
+        .pub-door-trim::after {
+            content: '';
+            position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 1px solid var(--color-forest);
+            pointer-events: none;
+        }
+
+        .pub-door-trim-light {
+            position: relative;
+            border: 2px solid var(--color-oat);
+        }
+        .pub-door-trim-light::after {
+            content: '';
+            position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 1px solid var(--color-oat);
+            pointer-events: none;
+        }
+
+        .stamp-rotate {
+            animation: rotateStamp 25s linear infinite;
+        }
+        @keyframes rotateStamp {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .nav-link {
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--color-butter);
+            transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mortise-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+        .mortise-divider::before,
+        .mortise-divider::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background-color: currentColor;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased relative selection:bg-butter selection:text-forest flex flex-col min-h-screen">
+
+    <div class="fixed inset-0 pointer-events-none z-0 bg-noise opacity-50 mix-blend-multiply"></div>
+
+    <!-- STICKY NAVIGATION -->
+    <nav class="sticky top-0 z-50 bg-forest text-oat border-b-4 border-butter shadow-xl">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#home" class="font-serif text-2xl lg:text-3xl font-bold tracking-tight hover:text-butter transition-colors">
+                Brewbaker <span class="italic font-normal">Cafe</span>
+            </a>
+
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-oat hover:text-butter transition-colors">Home</a>
+                <a href="#menu" class="nav-link text-oat hover:text-butter transition-colors">Menu</a>
+                <a href="#about" class="nav-link text-oat hover:text-butter transition-colors">About</a>
+                <a href="#find-us" class="nav-link text-oat hover:text-butter transition-colors">Find Us</a>
+            </div>
+
+            <button class="md:hidden text-butter p-2 focus:outline-none" aria-label="Menu">
+                <i class="ph ph-list text-3xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="relative z-10 flex-grow">
+
+        <!-- 1. HERO SECTION -->
+        <section id="home" class="relative pt-12 pb-24 md:pt-24 md:pb-32 px-6 overflow-hidden">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center relative">
+
+                <div class="absolute top-0 right-0 md:-right-12 w-32 h-32 md:w-40 md:h-40 z-20 pointer-events-none">
+                    <svg viewBox="0 0 100 100" class="w-full h-full text-forest stamp-rotate">
+                        <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
+                        <text font-family="Lato, sans-serif" font-size="11" font-weight="bold" fill="currentColor" letter-spacing="2">
+                            <textPath href="#circlePath" startOffset="0%">
+                                EST. ~ 1995 • STILL HOMEMADE •
+                            </textPath>
+                        </text>
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <i class="ph-fill ph-seal text-butter text-4xl"></i>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 pr-0 md:pr-12 relative z-10">
+                    <h1 class="font-serif text-5xl md:text-7xl xl:text-8xl font-bold leading-none text-forest mb-6">
+                        Dublin's <br>
+                        <span class="italic font-normal">best-kept</span><br>
+                        sandwich <br>secret.
+                    </h1>
+
+                    <div class="w-16 h-1 bg-butter mb-8"></div>
+
+                    <h2 class="text-xl md:text-2xl font-serif text-forest italic mb-4">
+                        "Serving Dublin for nearly 30 years."
+                    </h2>
+
+                    <p class="font-sans font-bold text-lg md:text-xl text-forest uppercase tracking-widest mb-10">
+                        Lunch, <span class="bg-forest text-butter px-2 py-1">7am–5pm</span>
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#menu" class="inline-flex items-center justify-center bg-forest text-oat px-8 py-4 font-bold tracking-wider uppercase text-sm border-2 border-forest hover:bg-transparent hover:text-forest transition-all shadow-heritage hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px]">
+                            See Today's Sandwich
+                        </a>
+                        <a href="tel:+35316778288" class="inline-flex items-center justify-center bg-transparent text-forest px-8 py-4 font-bold tracking-wider uppercase text-sm border-2 border-forest hover:bg-butter transition-all">
+                            <i class="ph ph-phone mr-2 text-lg"></i> +353 1 677 8288
+                        </a>
+                    </div>
+
+                    <p class="mt-6 text-sm font-sans flex items-center text-forest/80">
+                        <i class="ph ph-map-pin mr-2 text-butter text-xl"></i>
+                        18 South Frederick Street, Dublin 2
+                    </p>
+                </div>
+
+                <div class="w-full md:w-1/2 mt-16 md:mt-0 relative">
+                    <div class="pub-door-trim bg-forest p-4 md:p-6 rotate-2 shadow-heritage transition-transform hover:rotate-0 duration-500">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80" alt="View of an older Georgian building exterior setting the scene for Brewbaker Cafe on South Frederick Street." class="w-full object-cover aspect-[4/5] object-center mix-blend-luminosity opacity-90 contrast-125 sepia-[.2]">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="max-w-4xl mx-auto px-6 text-forest">
+            <div class="mortise-divider">
+                <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-4 text-forest">
+                    <rect x="6" y="2" width="28" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="20" cy="12" r="3" fill="currentColor"/>
+                    <circle cx="10" cy="12" r="1.5" fill="currentColor"/>
+                    <circle cx="30" cy="12" r="1.5" fill="currentColor"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- 2. MENU SECTION -->
+        <section id="menu" class="py-24 px-6 bg-forest text-oat relative">
+            <div class="max-w-6xl mx-auto relative z-10">
+
+                <div class="text-center mb-16">
+                    <h2 class="font-serif text-5xl md:text-6xl font-bold text-butter mb-4">The Menu</h2>
+                    <p class="font-sans text-lg tracking-widest uppercase opacity-80">Freshly prepared daily</p>
+                    <p class="font-serif italic text-oat/70 mt-2">Price range: €1–€10 per person</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+
+                    <div class="lg:col-span-7 space-y-12">
+
+                        <div class="bg-forest-light pub-door-trim-light p-8 shadow-heritage-butter -rotate-1 transform transition-transform hover:rotate-0">
+                            <div class="flex items-start justify-between border-b border-oat/30 pb-4 mb-4">
+                                <h3 class="font-serif text-3xl md:text-4xl text-butter font-bold">The Brewbaker Sandwich</h3>
+                                <div class="bg-butter text-forest font-bold px-3 py-1 text-sm uppercase tracking-wider hidden sm:block">Signature</div>
+                            </div>
+                            <p class="font-serif italic text-xl mb-6">Our daily rotating masterpiece.</p>
+                            <p class="font-sans text-sm uppercase tracking-widest text-oat/80 mb-2 border-l-2 border-butter pl-3">
+                                Fillings rotate daily. Check the chalkboard inside. Not published online.
+                            </p>
+                            <p class="font-sans text-sm opacity-70 mt-4">+ Freshly-prepared sandwiches daily.</p>
+                        </div>
+
+                        <div>
+                            <h3 class="font-serif text-2xl border-b border-oat/20 pb-2 mb-6 uppercase tracking-wider text-butter">Breakfast</h3>
+                            <ul class="space-y-4">
+                                <li class="flex justify-between items-baseline group">
+                                    <div class="font-serif text-xl border-b border-dotted border-oat/30 flex-grow mr-4 group-hover:border-butter transition-colors">Mini Breakfast</div>
+                                    <div class="font-sans font-bold">€8</div>
+                                </li>
+                                <li class="text-sm opacity-70 mb-4 pl-4 border-l border-oat/20">Sausage, rasher, egg, toast</li>
+
+                                <li class="flex justify-between items-baseline group mb-4">
+                                    <div class="font-serif text-xl border-b border-dotted border-oat/30 flex-grow mr-4 group-hover:border-butter transition-colors">Breakfast Roll</div>
+                                    <div class="font-sans font-bold">~€8.50</div>
+                                </li>
+
+                                <li class="flex justify-between items-baseline group mb-4">
+                                    <div class="font-serif text-xl border-b border-dotted border-oat/30 flex-grow mr-4 group-hover:border-butter transition-colors">Eggs Galore</div>
+                                </li>
+
+                                <li class="flex justify-between items-baseline group mb-4">
+                                    <div class="font-serif text-xl border-b border-dotted border-oat/30 flex-grow mr-4 group-hover:border-butter transition-colors">Smashed Avocado</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 space-y-12">
+
+                        <div>
+                            <h3 class="font-serif text-2xl border-b border-oat/20 pb-2 mb-6 uppercase tracking-wider text-butter flex items-center">
+                                Bakery <i class="ph-fill ph-oven ml-2 text-oat/50"></i>
+                            </h3>
+
+                            <div class="bg-butter text-forest p-4 mb-6 relative">
+                                <div class="absolute -top-3 -right-3 bg-forest text-butter rounded-full w-8 h-8 flex items-center justify-center shadow-lg">
+                                    <i class="ph-fill ph-star"></i>
+                                </div>
+                                <h4 class="font-serif font-bold text-2xl mb-1">Raspberry Scone</h4>
+                                <p class="text-sm font-sans font-bold uppercase tracking-wider opacity-80">The most-praised item.</p>
+                            </div>
+
+                            <ul class="space-y-4">
+                                <li class="font-serif text-xl border-b border-dotted border-oat/30 pb-1">Pear-and-almond scone</li>
+                                <li class="font-serif text-xl border-b border-dotted border-oat/30 pb-1">White-chocolate-raspberry scone</li>
+                                <li class="font-serif text-xl border-b border-dotted border-oat/30 pb-1 flex flex-col sm:flex-row justify-between sm:items-end">
+                                    <span>Apple pie</span>
+                                    <span class="text-sm font-sans uppercase tracking-wider text-butter opacity-90 pb-1">w/ Irish whipped cream</span>
+                                </li>
+                                <li class="font-serif text-xl border-b border-dotted border-oat/30 pb-1">Apple tart</li>
+                                <li class="font-serif text-xl border-b border-dotted border-oat/30 pb-1">Rhubarb pie</li>
+                                <li class="font-serif text-xl border-b border-dotted border-oat/30 pb-1">Carrot cake</li>
+                                <li class="font-serif text-xl border-b border-dotted border-oat/30 pb-1">Waffles</li>
+                                <li class="font-serif text-xl border-b border-dotted border-oat/30 pb-1">Pancakes</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="font-serif text-2xl border-b border-oat/20 pb-2 mb-6 uppercase tracking-wider text-butter">Drinks</h3>
+                            <ul class="space-y-4">
+                                <li class="font-serif text-xl border-b border-dotted border-oat/30 pb-1">Cappuccino</li>
+                                <li class="font-serif text-xl border-b border-dotted border-oat/30 pb-1">Coffee</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="absolute bottom-0 left-0 w-full h-4 bg-butter translate-y-2 z-0"></div>
+        </section>
+
+        <!-- 3. ABOUT SECTION -->
+        <section id="about" class="py-24 px-6 relative bg-oat">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row-reverse items-center gap-12 lg:gap-24">
+
+                <div class="w-full md:w-1/2">
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-forest mb-6">
+                        Serving Dublin for nearly 30 years.
+                    </h2>
+                    <div class="w-12 h-1 bg-forest mb-6"></div>
+                    <p class="font-sans text-lg text-ink/80 mb-6 leading-relaxed">
+                        Since circa 1995, Brewbaker Cafe has been a quiet fixture on South Frederick Street. Nestled between Trinity College and the government offices, we avoided the clamor of the digital world to focus entirely on what's in front of us: creating honest, homemade food for the people of Dublin.
+                    </p>
+                    <p class="font-sans text-lg text-ink/80 mb-8 leading-relaxed">
+                        Still owner-run, we believe in the kind of hospitality that remembers your order and respects your time. At the front of house, you'll be met by our incredible team—<strong class="text-forest">Marina, Luana, and Beatriz</strong>—who keep the soul of Brewbaker beating every morning.
+                    </p>
+
+                    <div class="inline-flex items-center gap-3 font-serif italic text-xl border-l-4 border-butter pl-4 py-1 text-forest">
+                        We are "the Brewbaker team." Come in and say hello.
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 relative">
+                    <div class="absolute inset-0 bg-butter transform -translate-x-4 translate-y-4 rotate-3 z-0"></div>
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80" alt="Three welcoming cafe staff members smiling at the front counter, representing Marina, Luana, and Beatriz." class="relative z-10 w-full h-auto grayscale border-4 border-forest shadow-xl aspect-square object-cover object-top">
+                    <div class="absolute bottom-4 right-[-20px] bg-white border border-oat/50 px-4 py-2 font-serif italic text-forest shadow-sm z-20 rotate-[-5deg]">
+                        Front of house crew
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="max-w-4xl mx-auto px-6 text-forest">
+            <div class="mortise-divider">
+                <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-4 text-forest">
+                    <rect x="6" y="2" width="28" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="20" cy="12" r="3" fill="currentColor"/>
+                    <circle cx="10" cy="12" r="1.5" fill="currentColor"/>
+                    <circle cx="30" cy="12" r="1.5" fill="currentColor"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- 4. TESTIMONIALS SECTION -->
+        <section class="py-16 px-6 bg-oat relative overflow-hidden">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="font-sans text-sm font-bold uppercase tracking-widest text-forest mb-2">Word of Mouth</h2>
+                    <h3 class="font-serif text-3xl md:text-4xl italic text-ink">We don't buy ads. We bake scones.</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
+
+                    <div class="pub-door-trim p-8 bg-white relative hover:-translate-y-1 transition-transform duration-300 shadow-sm">
+                        <i class="ph-fill ph-quotes text-5xl text-butter/30 absolute top-4 left-4"></i>
+                        <blockquote class="relative z-10 font-serif text-2xl md:text-3xl text-forest mt-4 mb-6 leading-tight">
+                            "Absolutely the best raspberry scone I have ever tasted."
+                        </blockquote>
+                        <cite class="block font-sans text-sm uppercase tracking-wide font-bold not-italic text-ink/70 flex items-center gap-2 border-t border-oat pt-4">
+                            T S <span class="text-butter font-normal text-xs px-2 py-0.5 bg-forest rounded-sm text-oat">TripAdvisor</span> <span class="font-normal text-xs lowercase">Aug 2024</span>
+                        </cite>
+                    </div>
+
+                    <div class="pub-door-trim p-8 bg-forest text-oat relative hover:-translate-y-1 transition-transform duration-300 shadow-heritage">
+                        <i class="ph-fill ph-quotes text-5xl text-butter opacity-20 absolute top-4 left-4"></i>
+                        <blockquote class="relative z-10 font-serif text-2xl md:text-3xl text-butter mt-4 mb-6 leading-tight">
+                            "Hands down one of the best cafes in Dublin — Everything is home made and sandwiches prepared fresh."
+                        </blockquote>
+                        <cite class="block font-sans text-sm uppercase tracking-wide font-bold not-italic text-oat/70 flex items-center gap-2 border-t border-forest-light pt-4">
+                            Margaret B <span class="text-forest font-normal text-xs px-2 py-0.5 bg-butter rounded-sm">TripAdvisor</span> <span class="font-normal text-xs lowercase">Jul 2024</span>
+                        </cite>
+                    </div>
+
+                    <div class="pub-door-trim p-8 bg-white relative hover:-translate-y-1 transition-transform duration-300 shadow-sm md:col-span-2 lg:col-span-1">
+                        <i class="ph-fill ph-quotes text-5xl text-butter/30 absolute top-4 left-4"></i>
+                        <blockquote class="relative z-10 font-serif text-2xl md:text-3xl text-forest mt-4 mb-6 leading-tight">
+                            "Best scones in Dublin indeed! Best scones ever in fact. Marina and Luana are super nice and friendly."
+                        </blockquote>
+                        <cite class="block font-sans text-sm uppercase tracking-wide font-bold not-italic text-ink/70 flex items-center gap-2 border-t border-oat pt-4">
+                            Scott <span class="text-white font-normal text-xs px-2 py-0.5 bg-blue-600 rounded-sm">Google</span>
+                        </cite>
+                    </div>
+
+                    <div class="pub-door-trim p-8 bg-white relative hover:-translate-y-1 transition-transform duration-300 shadow-sm">
+                        <i class="ph-fill ph-quotes text-5xl text-butter/30 absolute top-4 left-4"></i>
+                        <blockquote class="relative z-10 font-serif text-2xl md:text-3xl text-forest mt-4 mb-6 leading-tight">
+                            "The coffee was the best I have had in a long time."
+                        </blockquote>
+                        <cite class="block font-sans text-sm uppercase tracking-wide font-bold not-italic text-ink/70 flex items-center gap-2 border-t border-oat pt-4">
+                            Una C <span class="text-butter font-normal text-xs px-2 py-0.5 bg-forest rounded-sm text-oat">TripAdvisor</span> <span class="font-normal text-xs lowercase">Jul 2024</span>
+                        </cite>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. FIND US SECTION -->
+        <section id="find-us" class="bg-forest text-oat border-t-8 border-butter py-24 px-6 relative">
+            <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16">
+
+                <div class="w-full lg:w-5/12 space-y-10">
+                    <div>
+                        <h2 class="font-serif text-5xl mb-2 text-butter font-bold">Find Us</h2>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=18+South+Frederick+Street%2C+Dublin+2%2C+Ireland" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center text-lg font-sans border-b border-oat/30 hover:border-butter hover:text-butter transition-colors pb-1">
+                            18 South Frederick Street, Dublin 2
+                            <i class="ph ph-arrow-up-right ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                        </a>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-sans font-bold uppercase tracking-widest text-sm text-butter">Opening Ledger</h3>
+                        <div class="pub-door-trim-light p-6 bg-forest-light">
+                            <ul class="font-serif text-xl space-y-3">
+                                <li class="flex justify-between border-b border-dotted border-oat/20 pb-1">
+                                    <span>Monday</span> <span>7:00 – 17:00</span>
+                                </li>
+                                <li class="flex justify-between border-b border-dotted border-oat/20 pb-1">
+                                    <span>Tue–Thu</span> <span>9:00 – 17:00</span>
+                                </li>
+                                <li class="flex justify-between border-b border-dotted border-oat/20 pb-1 bg-oat/5 -mx-2 px-2 py-1 items-center">
+                                    <span class="font-bold text-butter">Friday</span>
+                                    <span class="bg-butter text-forest font-sans text-xs font-bold px-2 py-1 uppercase tracking-wider">Closed</span>
+                                </li>
+                                <li class="flex justify-between border-b border-dotted border-oat/20 pb-1 pt-1">
+                                    <span>Saturday</span> <span>7:00 – 16:00</span>
+                                </li>
+                                <li class="flex justify-between pb-1 items-center opacity-70">
+                                    <span>Sunday</span>
+                                    <span class="font-sans text-xs font-bold px-2 py-1 uppercase tracking-wider">Closed</span>
+                                </li>
+                            </ul>
+                            <p class="font-sans text-xs mt-4 uppercase tracking-wider text-butter/80 text-center">
+                                * Friday closure is a feature, not a bug.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 space-y-6 border-t border-oat/20">
+                        <a href="tel:+35316778288" class="flex items-center font-serif text-2xl hover:text-butter transition-colors">
+                            <i class="ph ph-phone text-butter mr-4 text-3xl"></i>
+                            +353 1 677 8288
+                        </a>
+                        <a href="mailto:pvmbrewbaker@eircom.net" class="flex items-center font-sans text-lg hover:text-butter transition-colors break-all">
+                            <i class="ph ph-envelope-simple text-butter mr-4 text-3xl"></i>
+                            pvmbrewbaker@eircom.net
+                        </a>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-7/12 relative min-h-[400px]">
+                    <div class="absolute inset-4 pub-door-trim-light bg-forest z-10 flex flex-col items-center justify-center text-center p-8">
+                         <i class="ph-fill ph-map-pin-line text-7xl text-butter mb-6"></i>
+                         <h3 class="font-serif text-3xl mb-4">Just off Dawson Street.</h3>
+                         <p class="font-sans text-lg mb-8 max-w-sm text-oat/80">Follow the smell of fresh coffee and baking scones down South Frederick Street.</p>
+                         <a href="https://www.google.com/maps/dir/?api=1&destination=18+South+Frederick+Street%2C+Dublin+2%2C+Ireland" target="_blank" rel="noopener noreferrer" class="bg-butter text-forest font-bold uppercase tracking-widest text-sm px-8 py-4 hover:bg-white transition-colors">
+                             Get Directions
+                         </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-ink text-oat py-12 px-6 border-t border-forest-light relative z-10">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+
+            <div class="text-center md:text-left">
+                <p class="font-serif text-2xl font-bold mb-1 tracking-wider">Brewbaker <span class="italic font-normal">Cafe</span></p>
+                <p class="font-sans text-sm text-oat/50 uppercase tracking-widest">Est. c. 1995 • Dublin 2</p>
+            </div>
+
+            <div class="flex gap-6">
+                <a href="https://instagram.com/brewbakerdublin" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center border border-oat/30 rounded-full hover:bg-butter hover:text-forest hover:border-butter transition-all group" aria-label="Instagram">
+                    <i class="ph ph-instagram-logo text-2xl group-hover:scale-110 transition-transform"></i>
+                </a>
+                <a href="https://facebook.com/brewbakercafes" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center border border-oat/30 rounded-full hover:bg-butter hover:text-forest hover:border-butter transition-all group" aria-label="Facebook">
+                    <i class="ph ph-facebook-logo text-2xl group-hover:scale-110 transition-transform"></i>
+                </a>
+            </div>
+
+        </div>
+        <div class="max-w-6xl mx-auto mt-10 pt-6 border-t border-oat/10 text-center md:text-left text-xs font-sans text-oat/40 flex flex-col md:flex-row justify-between">
+            <p>&copy; Brewbaker Cafe. All rights reserved.</p>
+            <p class="mt-2 md:mt-0">18 South Frederick Street, Dublin 2</p>
+        </div>
+    </footer>
+
+</body>
+</html>

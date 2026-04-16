@@ -1,0 +1,425 @@
+<!--
+  aesthetic_dna: Editorial Americana, Swiss Minimalist Typography, Hand-crafted Print Subdivisions
+  ui_paradigm: Digital Menuscript / Long-form Editorial Scroll
+  palette_choice:
+    Base: Cream / Off-White (#FBF7F0)
+    Ink/Primary Text: Oxblood (#5A2328)
+    Secondary Text: Deep Olive (#3E4535)
+    Accent/Highlight: Candlelight Amber (#D89A5B)
+-->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inga's Bar | Brooklyn Heights</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Libre+Franklin:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FBF7F0',
+                        oxblood: '#5A2328',
+                        olive: '#3E4535',
+                        amber: '#D89A5B',
+                        paper: '#f4efe6',
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Libre Franklin"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 20px 40px -10px rgba(62, 69, 53, 0.08), 0 0 1px rgba(90, 35, 40, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FBF7F0;
+            color: #3E4535;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: #D89A5B;
+            color: #5A2328;
+        }
+
+        .drop-cap p:first-of-type::first-letter {
+            float: left;
+            font-size: 5rem;
+            line-height: 4rem;
+            padding-right: 0.75rem;
+            padding-top: 0.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: #5A2328;
+            font-weight: 300;
+        }
+
+        .butcher-paper {
+            background-color: #f4efe6;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+            position: relative;
+        }
+
+        .menu-leader {
+            flex-grow: 1;
+            border-bottom: 1px dotted rgba(90, 35, 40, 0.25);
+            margin: 0 0.75rem;
+            position: relative;
+            top: -6px;
+        }
+
+        .hairline-b { border-bottom: 1px solid rgba(90, 35, 40, 0.15); }
+        .hairline-t { border-top: 1px solid rgba(90, 35, 40, 0.15); }
+
+        .neon-applause {
+            color: #bbf7d0;
+            text-shadow:
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #22c55e,
+                0 0 40px #22c55e,
+                0 0 80px #16a34a;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-weight: 200;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .amber-wash::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(216, 154, 91, 0.2), rgba(90, 35, 40, 0.3));
+            mix-blend-mode: multiply;
+            pointer-events: none;
+        }
+
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #5A2328;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+    </style>
+</head>
+<body class="font-sans">
+
+    <nav class="fixed top-0 w-full z-50 bg-cream/95 backdrop-blur-md hairline-b transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#home" class="font-serif text-3xl text-oxblood font-light tracking-wide outline-none focus-visible:ring-2 focus-visible:ring-amber focus-visible:ring-offset-4 focus-visible:ring-offset-cream">
+                Inga's Bar
+            </a>
+
+            <div class="hidden md:flex items-center space-x-10">
+                <a href="#menu" class="nav-link font-sans text-xs font-semibold tracking-[0.15em] uppercase text-olive hover:text-oxblood transition-colors">Menu</a>
+                <a href="#story" class="nav-link font-sans text-xs font-semibold tracking-[0.15em] uppercase text-olive hover:text-oxblood transition-colors">Named for Inga</a>
+                <a href="#find-us" class="nav-link font-sans text-xs font-semibold tracking-[0.15em] uppercase text-olive hover:text-oxblood transition-colors">Find Us</a>
+            </div>
+
+            <a href="https://resy.com/cities/new-york-ny/venues/ingas-bar" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center justify-center px-6 py-2.5 bg-amber text-oxblood font-sans text-xs font-semibold tracking-[0.15em] uppercase overflow-hidden shadow-sm transition-all focus-visible:ring-2 focus-visible:ring-oxblood focus-visible:ring-offset-2 focus-visible:ring-offset-cream">
+                <span class="absolute inset-0 w-full h-full bg-oxblood transform -translate-x-full transition-transform duration-300 ease-out group-hover:translate-x-0"></span>
+                <span class="relative group-hover:text-amber transition-colors duration-300">Reserve</span>
+            </a>
+        </div>
+    </nav>
+
+    <header id="home" class="pt-32 pb-24 lg:pt-40 lg:pb-32 px-6 max-w-7xl mx-auto isolate relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            <div class="lg:col-span-6 z-10 flex flex-col items-start">
+                <h1 class="font-serif text-6xl lg:text-8xl text-oxblood font-light leading-[0.9] tracking-tight mb-8">
+                    Inga's Bar
+                </h1>
+                <p class="font-sans text-xl lg:text-2xl text-olive font-light leading-snug mb-10 max-w-md">
+                    A neighborhood tavern on the fruit streets of Brooklyn Heights.
+                </p>
+
+                <div class="pl-6 border-l-2 border-amber/60 mb-12 max-w-sm">
+                    <p class="font-serif text-lg text-olive/80 italic leading-relaxed">
+                        "Sure, Ingas Bar is a tavern, but it feels like a tavern that's all dressed up."
+                    </p>
+                    <p class="font-sans text-xs font-semibold tracking-[0.1em] text-oxblood uppercase mt-3">
+                        — The Infatuation
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-6">
+                    <a href="https://resy.com/cities/new-york-ny/venues/ingas-bar" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-oxblood text-cream font-sans text-sm font-semibold tracking-[0.15em] uppercase hover:bg-olive transition-colors duration-300">
+                        Reserve a Table
+                    </a>
+                    <a href="#menu" class="group flex items-center font-sans text-sm font-semibold tracking-[0.15em] text-oxblood uppercase hover:text-amber transition-colors duration-300">
+                        See the Menu
+                        <i class="ph ph-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 relative h-[60vh] lg:h-[80vh] w-full mt-8 lg:mt-0">
+                <div class="absolute inset-0 amber-wash overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1200&q=80" alt="Warm ambient interior of a tavern showing an amber cocktail on a wooden table, illuminated by candlelight." class="w-full h-full object-cover object-center grayscale-[20%] contrast-125" />
+                </div>
+                <div class="absolute -inset-4 border border-oxblood/10 z-0 hidden lg:block pointer-events-none translate-x-4 -translate-y-4"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hairline-y bg-cream overflow-hidden py-10 relative">
+        <div class="absolute inset-0 hairline-t hairline-b pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
+            <span class="font-sans text-xs lg:text-sm font-medium tracking-[0.2em] text-olive/60 uppercase">The New York Times</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-amber/40 hidden md:block"></span>
+            <span class="font-sans text-xs lg:text-sm font-medium tracking-[0.2em] text-olive/60 uppercase">MICHELIN Guide</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-amber/40 hidden md:block"></span>
+            <span class="font-sans text-xs lg:text-sm font-medium tracking-[0.2em] text-olive/60 uppercase">Time Out New York</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-amber/40 hidden lg:block"></span>
+            <span class="font-sans text-xs lg:text-sm font-medium tracking-[0.2em] text-olive/60 uppercase hidden lg:inline-block">The Infatuation</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-amber/40 hidden lg:block"></span>
+            <span class="font-sans text-xs lg:text-sm font-medium tracking-[0.2em] text-olive/60 uppercase hidden lg:inline-block">Resy</span>
+        </div>
+    </section>
+
+    <section id="story" class="py-32 px-6 max-w-4xl mx-auto relative">
+        <div class="flex justify-center mb-12">
+            <svg width="40" height="12" viewBox="0 0 40 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-oxblood/30">
+                <path d="M20 0L23.5 8.5H39L26 12L20 0Z" fill="currentColor"/>
+                <path d="M20 0L16.5 8.5H1L14 12L20 0Z" fill="currentColor"/>
+            </svg>
+        </div>
+
+        <h2 class="font-serif text-3xl text-center text-oxblood font-light italic mb-16">Named for Inga</h2>
+
+        <div class="drop-cap font-sans text-lg lg:text-xl text-olive leading-[2] font-light max-w-2xl mx-auto text-justify cursor-text selection:bg-amber selection:text-cream">
+            <p>Inga's Bar is named for chef Sean Rembold's great-aunt Inga, who hosted large family gatherings at her Louisville kitchen. Sean and his wife, the designer Caron Callahan, opened Inga's in 2022 in the old Jack the Horse space on Hicks and Cranberry — a corner of the Brooklyn Heights fruit streets that had quietly waited for its next chapter. The philosophy, as Sean tells it: simple, seasoned, and seasonal.</p>
+        </div>
+    </section>
+
+    <section id="menu" class="py-24 px-6 bg-oxblood relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23FBF7F0\' fill-opacity=\'1\' fill-rule=\'evenodd\'%3E%3Ccircle cx=\'3\' cy=\'3\' r=\'3\'/%3E%3Ccircle cx=\'13\' cy=\'13\' r=\'3\'/%3E%3C/g%3E%3C/svg%3E');"></div>
+
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="butcher-paper shadow-card p-8 md:p-16 lg:p-20">
+                <header class="text-center mb-16 relative">
+                    <h2 class="font-serif text-4xl text-oxblood mb-4">Daily Menu</h2>
+                    <div class="w-12 h-[1px] bg-oxblood/30 mx-auto"></div>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
+                    <div class="space-y-16">
+                        <div>
+                            <h3 class="font-sans text-sm font-semibold tracking-[0.2em] text-oxblood uppercase mb-8 flex items-center">
+                                Snacks <span class="ml-4 h-[1px] flex-grow bg-oxblood/10"></span>
+                            </h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-baseline font-serif text-[1.1rem] text-olive">
+                                    <span>Celery Victor, anchovy, parmesan, pickled mustard seed</span>
+                                    <span class="menu-leader"></span>
+                                    <span class="text-oxblood font-sans text-sm">$16</span>
+                                </li>
+                                <li class="flex items-baseline font-serif text-[1.1rem] text-olive">
+                                    <span>Duck poutine croquettes, aioli</span>
+                                    <span class="menu-leader"></span>
+                                    <span class="text-oxblood font-sans text-sm">$12</span>
+                                </li>
+                                <li class="flex items-baseline font-serif text-[1.1rem] text-olive">
+                                    <span>Bacon-wrapped country pâté, mustard seed</span>
+                                    <span class="menu-leader"></span>
+                                    <span class="text-oxblood font-sans text-sm">$17</span>
+                                </li>
+                                <li class="font-serif text-[1.1rem] text-olive leading-snug pt-1">Mortadella, grated gouda, brown butter, honey, thyme</li>
+                                <li class="font-serif text-[1.1rem] text-olive leading-snug pt-1">Ricotta and focaccia</li>
+                                <li class="font-serif text-[1.1rem] text-olive leading-snug pt-1">Summer sausage from Usinger's</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="font-sans text-sm font-semibold tracking-[0.2em] text-oxblood uppercase mb-8 flex items-center">
+                                Mains <span class="ml-4 h-[1px] flex-grow bg-oxblood/10"></span>
+                            </h3>
+                            <ul class="space-y-5">
+                                <li class="font-serif text-[1.1rem] text-olive leading-snug">Dry-aged double cheeseburger, American cheese, house pickles, hand-cut fries</li>
+                                <li class="flex items-baseline font-serif text-[1.1rem] text-olive">
+                                    <span>Fisherman's stew, cockles, mussels, hake</span>
+                                    <span class="menu-leader"></span>
+                                    <span class="text-oxblood font-sans text-sm">$27</span>
+                                </li>
+                                <li class="flex items-baseline font-serif text-[1.1rem] text-olive">
+                                    <span>Guinness-braised short ribs, cannellini beans</span>
+                                    <span class="menu-leader"></span>
+                                    <span class="text-oxblood font-sans text-sm">$30</span>
+                                </li>
+                                <li class="font-serif text-[1.1rem] text-olive leading-snug pt-1">Brook trout, dill beurre blanc</li>
+                                <li class="font-serif text-[1.1rem] text-olive leading-snug pt-1">NY strip steak, littleneck clams</li>
+                                <li class="font-serif text-[1.1rem] text-olive leading-snug pt-1">Chicken schnitzel</li>
+                                <li class="font-serif text-[1.1rem] text-olive leading-snug pt-1">Israeli couscous primavera, manchego</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="space-y-16">
+                        <div>
+                            <h3 class="font-sans text-sm font-semibold tracking-[0.2em] text-oxblood uppercase mb-8 flex items-center">
+                                Dessert <span class="ml-4 h-[1px] flex-grow bg-oxblood/10"></span>
+                            </h3>
+                            <ul class="space-y-3">
+                                <li class="font-serif text-[1.1rem] text-olive">Blackout cake, lemon curd</li>
+                                <li class="font-serif text-[1.1rem] text-olive">Buttermilk tart</li>
+                                <li class="font-serif text-[1.1rem] text-olive">Key lime pie</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="font-sans text-sm font-semibold tracking-[0.2em] text-oxblood uppercase mb-8 flex items-center whitespace-nowrap">
+                                Brunch <span class="mx-3 font-medium text-[0.65rem] text-olive/60 tracking-normal border border-olive/20 px-2 py-0.5 rounded-full">SAT &amp; SUN 10–3</span> <span class="h-[1px] flex-grow bg-oxblood/10"></span>
+                            </h3>
+                            <ul class="space-y-3">
+                                <li class="font-serif text-[1.1rem] text-olive">Biscuits and sausage gravy</li>
+                                <li class="font-serif text-[1.1rem] text-olive">Morel eggs Benedict</li>
+                                <li class="font-serif text-[1.1rem] text-olive">Kentucky Hot Brown (turkey)</li>
+                                <li class="font-serif text-[1.1rem] text-olive">Chilaquiles</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="font-sans text-sm font-semibold tracking-[0.2em] text-oxblood uppercase mb-8 flex items-center">
+                                Cocktails <span class="ml-4 h-[1px] flex-grow bg-oxblood/10"></span>
+                            </h3>
+                            <ul class="space-y-4">
+                                <li class="font-serif text-[1.1rem] text-olive leading-snug">Inga's Manhattan, liquid amber</li>
+                                <li class="flex items-baseline font-serif text-[1.1rem] text-olive">
+                                    <span class="max-w-[75%] leading-snug">Romance Language, tequila, French and Italian vermouth</span>
+                                    <span class="menu-leader"></span>
+                                    <span class="text-oxblood font-sans text-sm">$14</span>
+                                </li>
+                                <li class="font-serif text-[1.1rem] text-olive leading-snug pt-1">Sherry, Niles? — Manzanilla, kumquat vermouth, angostura</li>
+                                <li class="flex items-baseline font-serif text-[1.1rem] text-olive pt-1">
+                                    <span>Natural wine by the glass</span>
+                                    <span class="menu-leader"></span>
+                                    <span class="text-oxblood font-sans text-sm">$9–17</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-20 text-center">
+                    <p class="font-sans text-xs text-olive/70 uppercase tracking-widest border-t border-oxblood/10 pt-8 inline-block">
+                        Menu changes with the seasons.<br class="md:hidden"/> Nothing on the dinner menu exceeds $30.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-40 px-6 max-w-5xl mx-auto text-center isolate">
+        <svg class="mx-auto text-amber/40 mb-8 w-12 h-12" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M9.352 14.73c-2.399-.1-4.793.99-6.326 2.802-1.533 1.811-2.072 4.316-1.442 6.643.63 2.327 2.455 4.148 4.785 4.773 2.33.625 4.838.082 6.65-1.455 1.813-1.537 2.898-3.935 2.793-6.335-.04-1.21-.383-2.383-1.002-3.418L13.88 12h-4.528l0 2.73zM25.753 14.73c-2.399-.1-4.792.99-6.325 2.802-1.533 1.811-2.072 4.316-1.442 6.643.63 2.327 2.454 4.148 4.784 4.773 2.331.625 4.839.082 6.651-1.455 1.813-1.537 2.898-3.935 2.793-6.335-.039-1.21-.382-2.383-1.001-3.418L30.28 12h-4.528l0 2.73z"/>
+        </svg>
+        <blockquote class="font-serif text-5xl md:text-6xl text-oxblood italic font-light leading-[1.1] mb-10">
+            "The celery Victor is <br class="hidden md:block" />not just a salad."
+        </blockquote>
+        <div class="flex flex-col items-center">
+            <p class="text-olive text-lg mb-2">Sam Sifton, named it one of the best things to eat in NYC.</p>
+            <p class="text-xs font-bold tracking-[0.15em] text-oxblood uppercase">— The New York Times</p>
+        </div>
+    </section>
+
+    <section id="find-us" class="hairline-t bg-cream relative">
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+            <div class="p-12 md:p-24 flex flex-col justify-center lg:hairline-r">
+                <h2 class="font-serif text-4xl text-oxblood mb-6">66 Hicks Street, <br/>Brooklyn Heights</h2>
+                <p class="font-sans text-lg text-olive font-light leading-relaxed mb-10 max-w-md">
+                    On the corner of Hicks and Cranberry, across from the old Jack the Horse.
+                </p>
+
+                <div class="space-y-6 mb-12">
+                    <a href="tel:+19179091177" class="group flex items-center font-sans text-xl text-oxblood font-medium hover:text-amber transition-colors w-max">
+                        <i class="ph ph-phone mr-3 text-2xl text-olive/50 group-hover:text-amber transition-colors"></i>
+                        (917) 909-1177
+                    </a>
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=66+Hicks+Street+Brooklyn+NY+11201" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-3 border border-oxblood text-oxblood font-sans text-xs font-semibold tracking-[0.15em] uppercase hover:bg-oxblood hover:text-cream transition-colors duration-300 w-max">
+                        Get Directions
+                    </a>
+                </div>
+
+                <div class="space-y-4 font-sans text-sm tracking-wide text-olive">
+                    <div class="flex justify-between max-w-xs hairline-b pb-2">
+                        <span class="font-semibold uppercase w-24">Mon–Thu</span>
+                        <span>5p — 10p</span>
+                    </div>
+                    <div class="flex justify-between max-w-xs hairline-b pb-2">
+                        <span class="font-semibold uppercase w-24">Fri</span>
+                        <span>4p — 10p</span>
+                    </div>
+                    <div class="flex flex-col max-w-xs gap-1 pt-2">
+                        <span class="font-semibold uppercase">Sat &amp; Sun</span>
+                        <div class="flex justify-between text-olive/80 pl-4">
+                            <span>Brunch</span>
+                            <span>10a — 3p</span>
+                        </div>
+                        <div class="flex justify-between text-olive/80 pl-4">
+                            <span>Dinner</span>
+                            <span>4p — 10p</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#11130e] p-12 md:p-24 min-h-[500px] flex items-center justify-center relative overflow-hidden group border-t lg:border-t-0 border-[#5A2328]/20">
+                <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E');"></div>
+
+                <div class="absolute inset-0 pointer-events-none opacity-10" style="background-image: linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px); background-size: 50px 30px;"></div>
+
+                <div class="relative z-10 p-8 border-2 border-[#16a34a]/30 rounded-sm bg-black/40 backdrop-blur-sm transform transition-transform duration-700 hover:scale-105 cursor-pointer" title="Clap when the food arrives.">
+                    <span class="text-4xl md:text-6xl neon-applause block">Applause</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-olive text-cream py-16 px-6 border-t-[8px] border-oxblood">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex flex-col items-center md:items-start gap-4">
+                <span class="font-serif text-3xl font-light italic">I.B.</span>
+                <p class="font-serif text-xs text-cream/50 italic tracking-wide">
+                    Inga — from Ingeborg, "Ing's protection".
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-6 md:gap-12 font-sans text-xs font-semibold tracking-[0.15em] uppercase">
+                <a href="https://www.instagram.com/ingasbarnyc/" target="_blank" rel="noopener noreferrer" class="flex items-center group hover:text-amber transition-colors">
+                    <i class="ph ph-instagram-logo text-xl mr-2"></i> @ingasbarnyc
+                </a>
+                <a href="mailto:hello@ingasbar.com" class="flex items-center group hover:text-amber transition-colors">
+                    <i class="ph ph-envelope-simple text-xl mr-2"></i> hello@ingasbar.com
+                </a>
+            </div>
+
+            <div class="font-sans text-[0.65rem] tracking-widest text-cream/40 uppercase">
+                &copy; Inga's Bar 2026
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

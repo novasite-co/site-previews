@@ -1,0 +1,489 @@
+<!--
+aesthetic_dna: Editorial Scrollytelling / Digital Print Hybrid
+ui_paradigm: Literary publication layout adapted for web (Swiss-meets-Penguin-Classics)
+palette_choice: Oat cream base, Penguin burnt-orange, ink black, paper off-white, oxblood accents
+-->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bark Coffee | Inside Alan Hanna's Bookshop</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'book-oat': '#f4f1ea',
+                        'book-paper': '#fdfbf7',
+                        'book-ink': '#1a1918',
+                        'penguin-orange': '#f37021',
+                        'oxblood': '#722f37',
+                        'ink-muted': '#5c5a58',
+                    },
+                    fontFamily: {
+                        'display': ['"Cormorant Garamond"', 'serif'],
+                        'body': ['"Lora"', 'serif'],
+                    },
+                    spacing: {
+                        '18': '4.5rem',
+                        '22': '5.5rem',
+                    },
+                    typography: {
+                        DEFAULT: {
+                            css: {
+                                maxWidth: '65ch',
+                            },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Editorial Micro-Architecture */
+        ::selection {
+            background-color: #f37021; /* penguin-orange */
+            color: #fdfbf7;
+        }
+
+        body {
+            background-color: #f4f1ea;
+            color: #1a1918;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f4f1ea;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #5c5a58;
+            border-radius: 0px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f37021;
+        }
+
+        /* Drop Cap Logic */
+        .drop-cap::first-letter {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 5rem;
+            font-weight: 400;
+            float: left;
+            line-height: 0.8;
+            padding-right: 0.5rem;
+            padding-top: 0.5rem;
+            color: #f37021;
+        }
+
+        /* Dotted Leader for Menu / Index feel */
+        .leader {
+            flex-grow: 1;
+            border-bottom: 2px dotted #1a1918;
+            opacity: 0.15;
+            margin: 0 1rem;
+            position: relative;
+            top: -0.4rem;
+        }
+
+        /* Marginalia Grid Setup */
+        .marginalia-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        @media (min-width: 1024px) {
+            .marginalia-grid {
+                grid-template-columns: 1fr 3fr 1fr;
+                gap: 3rem;
+            }
+            .marginalia-left { grid-column: 1; text-align: right; }
+            .marginalia-main { grid-column: 2; }
+            .marginalia-right { grid-column: 3; }
+        }
+
+        /* Deckled Edge Divider */
+        .deckled-divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(26,25,24,0.1) 20%, rgba(26,25,24,0.1) 80%, transparent);
+            margin: 4rem 0;
+            position: relative;
+        }
+        .deckled-divider::after {
+            content: "⁂";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #f4f1ea;
+            padding: 0 1rem;
+            font-size: 1.5rem;
+            color: #722f37;
+            font-family: serif;
+        }
+
+        .hover-underline {
+            position: relative;
+            text-decoration: none;
+        }
+        .hover-underline::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: #f37021;
+            transform-origin: bottom right;
+            transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        .hover-underline:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Image treatment */
+        .plate-img {
+            outline: 1px solid rgba(26,25,24,0.1);
+            outline-offset: -10px;
+        }
+    </style>
+</head>
+<body class="font-body text-book-ink relative leading-relaxed">
+
+    <!-- Persistence Layer: Running Header (Nav) -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-book-oat/90 backdrop-blur-md border-b border-book-ink/10 transition-all duration-300 py-3 px-6 lg:px-12">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 md:gap-0">
+            <a href="#home" class="font-display text-xl tracking-wide uppercase font-medium hover:text-penguin-orange transition-colors">
+                Bark Coffee <span class="text-ink-muted/50 text-sm align-middle mx-1">·</span> <span class="text-sm tracking-widest text-ink-muted">Inside Alan Hanna's Bookshop</span>
+            </a>
+            <nav class="flex gap-6 text-sm tracking-widest uppercase font-display font-medium">
+                <a href="#menu" class="hover-underline text-ink-muted hover:text-penguin-orange transition-colors">Menu</a>
+                <a href="#about" class="hover-underline text-ink-muted hover:text-penguin-orange transition-colors">About</a>
+                <a href="#visit" class="hover-underline text-ink-muted hover:text-penguin-orange transition-colors">Visit</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24 px-6 lg:px-12 max-w-screen-2xl mx-auto">
+
+        <!-- CHAPTER 1: Hero -->
+        <section id="home" class="min-h-[85vh] flex items-center marginalia-grid relative">
+
+            <aside class="marginalia-left hidden lg:block self-start pt-24 space-y-8">
+                <div>
+                    <h4 class="font-display font-bold uppercase tracking-widest text-xs text-ink-muted mb-2 border-b border-ink-muted/20 inline-block pb-1">Location</h4>
+                    <p class="text-sm text-ink-muted mt-2">270 Rathmines Road Lower,<br>Dublin 6</p>
+                </div>
+                <div>
+                     <h4 class="font-display font-bold uppercase tracking-widest text-xs text-ink-muted mb-2 border-b border-ink-muted/20 inline-block pb-1">Contact</h4>
+                     <a href="tel:+35314967398" class="block text-sm text-ink-muted hover:text-penguin-orange transition-colors mt-2">+353 1 496 7398</a>
+                </div>
+            </aside>
+
+            <article class="marginalia-main flex flex-col justify-center">
+                <span class="font-display italic text-penguin-orange text-xl lg:text-2xl mb-4 block">Chapter One —</span>
+                <h1 class="font-display text-6xl lg:text-8xl 2xl:text-9xl tracking-tight leading-none mb-10">Coffee at the back<br>of the shop.</h1>
+
+                <div class="max-w-xl text-lg lg:text-xl text-ink-muted space-y-6 drop-cap mb-12">
+                    <p>
+                        Concealed beyond the stacks of Alan Hanna's, Bark Coffee is not just a café; it is a retreat. A cocoon of warmth built by two friends in 2013, designed for quiet reading, spirited conversation, and the simple pursuit of a perfect cup.
+                    </p>
+                </div>
+
+                <a href="#visit" class="group flex items-center gap-4 w-fit bg-book-ink text-book-oat px-8 py-4 font-display uppercase tracking-widest text-sm hover:bg-penguin-orange transition-colors duration-300">
+                    Come find us at the back of the shop
+                    <i class="ph ph-arrow-right text-lg group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </article>
+
+            <aside class="marginalia-right relative w-full aspect-[3/4] lg:aspect-auto lg:h-[80%] self-center plate-img bg-book-paper p-2 shadow-xl shadow-book-ink/5 rotate-1">
+                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80"
+                     alt="A warm, inviting perspective looking past stacked books towards a cozy café area"
+                     class="w-full h-full object-cover grayscale-[30%] contrast-125">
+                <div class="absolute -bottom-6 -left-6 bg-book-paper border border-book-ink/10 px-4 py-2 font-display italic text-sm text-ink-muted shadow-sm">
+                    Fig 1. View from the stacks.
+                </div>
+            </aside>
+
+        </section>
+
+        <div class="deckled-divider"></div>
+
+        <!-- THE INDEX: Menu Section -->
+        <section id="menu" class="py-20 marginalia-grid">
+
+            <aside class="marginalia-left hidden lg:block pt-32 space-y-12">
+                 <div>
+                    <h4 class="font-display font-bold uppercase tracking-widest text-sm text-penguin-orange mb-4">Books agus Beans</h4>
+                    <p class="text-sm italic text-ink-muted leading-relaxed">
+                        A curation of daily necessities, prepared meticulously. Our offerings rotate to respect the season and the source.
+                    </p>
+                </div>
+            </aside>
+
+            <div class="marginalia-main bg-book-paper p-8 lg:p-16 border border-book-ink/10 shadow-2xl shadow-book-ink/5 relative">
+                <div class="absolute inset-4 border border-book-ink/5 pointer-events-none"></div>
+
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-4xl uppercase tracking-widest">Index of Provisions</h2>
+                    <p class="font-display italic text-ink-muted mt-4 text-lg">Curated daily at the back of the shop.</p>
+                </div>
+
+                <div class="space-y-16 relative z-10">
+
+                    <div>
+                        <h3 class="font-display uppercase tracking-widest text-lg border-b border-book-ink pb-2 mb-6">Coffee & Drinks</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-baseline">
+                                <span class="font-display text-xl font-medium">House Coffee</span><sup class="text-oxblood ml-1">[1]</sup>
+                                <span class="leader"></span>
+                            </li>
+                            <li class="flex items-baseline">
+                                <span class="font-display text-xl">Chai Latte</span>
+                                <span class="leader"></span>
+                            </li>
+                            <li class="flex items-baseline">
+                                <span class="font-display text-xl">Matcha Latte</span>
+                                <span class="leader"></span>
+                            </li>
+                            <li class="flex items-baseline">
+                                <span class="font-display text-xl">Specialist Loose-leaf Teas</span>
+                                <span class="leader"></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-display uppercase tracking-widest text-lg border-b border-book-ink pb-2 mb-6">Food</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-baseline">
+                                <span class="font-display text-xl font-medium">Signature Gourmet Sandwiches</span><sup class="text-oxblood ml-1">[2]</sup>
+                                <span class="leader"></span>
+                            </li>
+                            <li class="flex items-baseline">
+                                <span class="font-display text-xl">Toasted Sandwiches</span>
+                                <span class="leader"></span>
+                            </li>
+                            <li class="flex items-baseline">
+                                <span class="font-display text-xl">Healthy Breakfasts</span>
+                                <span class="leader"></span>
+                            </li>
+                            <li class="flex items-baseline">
+                                <span class="font-display text-xl">Homemade Soups</span><sup class="text-oxblood ml-1">[3]</sup>
+                                <span class="leader"></span>
+                            </li>
+                            <li class="flex items-baseline">
+                                <span class="font-display text-xl">Fresh Salads</span>
+                                <span class="leader"></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-display uppercase tracking-widest text-lg border-b border-book-ink pb-2 mb-6">Bakery</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-baseline">
+                                <span class="font-display text-xl font-medium">Brownies</span><sup class="text-oxblood ml-1">[4]</sup>
+                                <span class="leader"></span>
+                            </li>
+                            <li class="flex items-baseline">
+                                <span class="font-display text-xl">Cakes, Scones & Muffins</span>
+                                <span class="leader"></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                     <div>
+                        <h3 class="font-display uppercase tracking-widest text-lg border-b border-book-ink pb-2 mb-6">Impulse</h3>
+                        <p class="font-display text-xl italic text-ink-muted">Crisps, popcorn, and assorted candy bars available at the counter.</p>
+                    </div>
+
+                </div>
+
+                <div class="mt-20 pt-8 border-t border-book-ink/20 text-sm space-y-3">
+                    <p class="text-oxblood"><sup class="mr-1">[1]</sup> <span class="text-ink-muted">Espresso-based, frequently praised as the best in Rathmines.</span></p>
+                    <p class="text-oxblood"><sup class="mr-1">[2]</sup> <span class="text-ink-muted">Made to order. Menu rotates daily. Seek out the Kimchi Cuban when available.</span></p>
+                    <p class="text-oxblood"><sup class="mr-1">[3]</sup> <span class="text-ink-muted">Rotating selection.</span></p>
+                    <p class="text-oxblood"><sup class="mr-1">[4]</sup> <span class="text-ink-muted">Our most-praised item. Real. Baked in the last 24 hours.</span></p>
+                    <div class="mt-6 pt-4 border-t border-book-ink/10 flex justify-between font-display uppercase tracking-widest text-xs">
+                        <span>† All produce sourced as locally as possible.</span>
+                        <span>Average spend: €11–€19 per person.</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <aside class="marginalia-right hidden lg:flex flex-col justify-end pb-12">
+                 <img src="https://images.unsplash.com/photo-1557006021-b85faa2bc5e2?auto=format&fit=crop&w=600&q=80"
+                     alt="Top down view of a dark espresso coffee beside a rich chocolate brownie"
+                     class="w-full aspect-square object-cover plate-img -rotate-2">
+            </aside>
+        </section>
+
+        <div class="deckled-divider text-center">
+            <span class="bg-book-oat px-4 italic font-display text-xl text-ink-muted relative z-10">* * *</span>
+        </div>
+
+        <!-- DEDICATION: About Molly -->
+        <section id="about" class="py-16">
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-12 items-center bg-book-ink text-book-oat p-8 lg:p-16 plate-img relative">
+
+                <div class="absolute -top-4 -right-4 lg:-right-8 w-24 h-24 bg-penguin-orange flex items-center justify-center rounded-full text-book-oat font-display italic text-lg shadow-lg rotate-12">
+                    Est. 2013
+                </div>
+
+                <div class="w-full md:w-2/5 shrink-0">
+                    <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=600&q=80"
+                         alt="A soulful dog looking thoughtfully, reminiscent of Molly"
+                         class="w-full aspect-[4/5] object-cover border-4 border-book-oat/10 grayscale">
+                    <p class="text-center font-display italic text-sm mt-4 text-book-oat/60">Fig 2. The namesake.</p>
+                </div>
+                <div class="w-full md:w-3/5 space-y-6">
+                    <h2 class="font-display text-4xl lg:text-5xl border-b border-book-oat/20 pb-4">The Dog in the Bookshop</h2>
+                    <p class="text-lg leading-relaxed text-book-oat/90">
+                        Bark Coffee borrows its name from Molly, the resident dog who keeps watch at the front of Alan Hanna's Bookshop. In 2013, two friends carved out this space at the back, marrying the scent of old paper with freshly extracted espresso.
+                    </p>
+                    <div class="bg-book-oat/10 p-6 border-l-2 border-penguin-orange mt-6">
+                        <p class="font-display text-xl italic mb-2">@booksagusbeans</p>
+                        <p class="text-sm">Our digital moniker. <span class="font-semibold text-penguin-orange">Agus</span> is the Irish word for <span class="font-semibold">and</span>. Books and beans; a quiet, perfect partnership.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACCLAIM: Testimonials -->
+        <section class="py-24 marginalia-grid">
+            <div class="marginalia-left hidden lg:block">
+                <p class="font-display uppercase tracking-widest text-xs text-ink-muted text-right sticky top-32 [writing-mode:vertical-rl] transform rotate-180">Critical Acclaim</p>
+            </div>
+
+            <div class="marginalia-main space-y-16 lg:space-y-24">
+                <h2 class="sr-only">Testimonials</h2>
+
+                <blockquote class="relative max-w-2xl ml-auto border-t border-book-ink/20 pt-8">
+                    <i class="ph-fill ph-quotes text-5xl text-penguin-orange/20 absolute -top-4 left-0 -translate-x-12"></i>
+                    <p class="font-display text-2xl lg:text-3xl italic leading-snug text-book-ink mb-6">"Bark Coffee is one of Dublin's hidden gems — serving healthy breakfasts, homemade soups and signature sandwiches, all at a great price."</p>
+                    <footer class="font-display uppercase tracking-widest text-xs text-oxblood">
+                        — TripAdvisor Reviewer
+                    </footer>
+                </blockquote>
+
+                <blockquote class="relative max-w-2xl border-t border-book-ink/20 pt-8">
+                    <i class="ph-fill ph-quotes text-5xl text-penguin-orange/20 absolute -top-4 left-0 -translate-x-12"></i>
+                    <p class="font-display text-2xl lg:text-3xl italic leading-snug text-book-ink mb-6">"The BEST brownies in Dublin — not the pre-packaged ones you get in Starbucks or Insomnia, but real ones that taste like they were in an oven in the last 24 hours."</p>
+                    <footer class="font-display uppercase tracking-widest text-xs text-oxblood">
+                        — TripAdvisor Reviewer
+                    </footer>
+                </blockquote>
+
+                <blockquote class="relative max-w-2xl ml-auto border-t border-book-ink/20 pt-8">
+                    <i class="ph-fill ph-quotes text-5xl text-penguin-orange/20 absolute -top-4 left-0 -translate-x-12"></i>
+                    <p class="font-display text-2xl lg:text-3xl italic leading-snug text-book-ink mb-6">"Tucked neatly at the back of the great, friendly Hannas Bookshop in Rathmines, Bark is a most pleasant place to have coffee or lunch with a charming, unique book-orientated atmosphere."</p>
+                    <footer class="font-display uppercase tracking-widest text-xs text-oxblood">
+                        — TripAdvisor Reviewer
+                    </footer>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- COLOPHON: Visit Section -->
+        <section id="visit" class="py-24 border-t-4 border-double border-book-ink">
+            <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 justify-between items-start">
+
+                <div class="lg:w-1/2 space-y-12">
+                    <h2 class="font-display text-5xl lg:text-7xl uppercase tracking-tighter">Locate Us.</h2>
+                    <p class="text-xl italic text-ink-muted font-display">Step through the doors of Alan Hanna's Bookshop. Walk past the history, fiction, and art. We are waiting at the back.</p>
+
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=270+Rathmines+Road+Lower%2C+Dublin+6%2C+Ireland" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center gap-3 border border-book-ink px-6 py-3 font-display uppercase tracking-widest text-sm hover:bg-book-ink hover:text-book-paper transition-colors w-full sm:w-auto justify-center">
+                        <i class="ph ph-map-pin text-lg"></i> Get Directions to Rathmines
+                    </a>
+                </div>
+
+                <div class="lg:w-1/2 w-full grid grid-cols-1 sm:grid-cols-2 gap-12 pt-4">
+
+                    <div>
+                        <h4 class="font-display font-medium uppercase tracking-widest text-xs border-b border-book-ink pb-2 mb-4">Operating Hours</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex justify-between">
+                                <span class="font-semibold">Mon – Sat</span>
+                                <span>9:30am – 5:30pm</span>
+                            </li>
+                            <li class="flex justify-between text-oxblood font-medium">
+                                <span>Sunday</span>
+                                <span>CLOSED</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-display font-medium uppercase tracking-widest text-xs border-b border-book-ink pb-2 mb-4">Correspondence</h4>
+                        <ul class="space-y-4 text-sm">
+                            <li>
+                                <span class="block text-ink-muted text-xs uppercase tracking-wider mb-1">Telephone</span>
+                                <a href="tel:+35314967398" class="font-display text-lg hover:text-penguin-orange transition-colors">+353 1 496 7398</a>
+                            </li>
+                            <li>
+                                <span class="block text-ink-muted text-xs uppercase tracking-wider mb-1">Electronic Mail</span>
+                                <a href="mailto:hannas@iol.ie" class="font-display text-lg hover:text-penguin-orange transition-colors">hannas@iol.ie</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-book-ink text-book-oat py-12 px-6 lg:px-12 border-t-[8px] border-penguin-orange relative overflow-hidden">
+        <div class="absolute -bottom-24 -right-12 text-[20rem] font-display text-book-oat/5 select-none pointer-events-none italic">
+            &
+        </div>
+
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <span class="block font-display text-2xl uppercase tracking-widest mb-2">Bark Coffee</span>
+                <span class="text-book-oat/60 text-sm font-display italic">Inside Alan Hanna's Bookshop</span>
+            </div>
+
+            <div class="flex items-center gap-8">
+                <a href="https://instagram.com/booksagusbeans" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 hover:text-penguin-orange transition-colors">
+                    <i class="ph ph-instagram-logo text-2xl group-hover:-translate-y-1 transition-transform"></i>
+                    <span class="font-display text-sm tracking-widest uppercase">@booksagusbeans</span>
+                </a>
+                <a href="https://facebook.com/BarkCoffeeDublin" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-2 hover:text-penguin-orange transition-colors">
+                    <i class="ph ph-facebook-logo text-2xl group-hover:-translate-y-1 transition-transform"></i>
+                    <span class="font-display text-sm tracking-widest uppercase">Facebook</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-book-oat/10 flex flex-col sm:flex-row justify-between text-xs text-book-oat/40 font-display tracking-widest uppercase">
+            <p>&copy; 2013 — Present. All rights reserved.</p>
+            <p>Rathmines, Dublin 6</p>
+        </div>
+    </footer>
+
+</body>
+</html>

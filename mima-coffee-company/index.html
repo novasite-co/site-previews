@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIMA Coffee Company | Beechwood Luas Platform Kiosk</title>
+    <meta name="description" content="A family-run cafe occupying the Beechwood Luas tram-platform kiosk in Ranelagh, Dublin 6.">
+    <!--
+      aesthetic_dna: Transit Brutalism meets Humanist Community Editorial
+      ui_paradigm: Immersive spatial layout abstracting tram tracking apps and physical platform signage
+      palette: Oat Cream base, Muted Luas Sage, Ink Black, Accent Tram Red, Edge Yellow
+    -->
+
+    <!-- Fonts: Space Grotesk (Transit/Tech headers) + Lora (Humanist Serif for community/roots) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --oat: #F4F1E9;
+            --sage: #9AB2A1;
+            --sage-dark: #7D9483;
+            --ink: #101614;
+            --tram-red: #D63D30;
+            --edge-yellow: #FACC15;
+
+            --font-transit: 'Space Grotesk', sans-serif;
+            --font-editorial: 'Lora', serif;
+        }
+
+        body {
+            background-color: var(--oat);
+            color: var(--ink);
+            font-family: var(--font-editorial);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .transit-font {
+            font-family: var(--font-transit);
+        }
+
+        .platform-edge {
+            background: repeating-linear-gradient(
+                -45deg,
+                var(--ink),
+                var(--ink) 10px,
+                var(--edge-yellow) 10px,
+                var(--edge-yellow) 20px
+            );
+            height: 6px;
+            width: 100%;
+        }
+
+        .marquee-container {
+            display: flex;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: flex;
+            animation: marquee 25s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .tram-wrapper {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            z-index: 10;
+        }
+        .tram-slide {
+            position: absolute;
+            bottom: 6px;
+            left: -800px;
+            animation: tramPass 18s linear infinite;
+        }
+        @keyframes tramPass {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(calc(100vw + 800px)); }
+        }
+
+        .window-frame {
+            position: relative;
+            box-shadow: inset 0 0 0 20px var(--ink);
+            border-radius: 12px;
+        }
+        @media (min-width: 768px) {
+            .window-frame {
+                box-shadow: inset 0 0 0 40px var(--ink);
+                border-radius: 16px;
+            }
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .ticket-cutout {
+            position: relative;
+            background: var(--oat);
+        }
+        .ticket-cutout::before,
+        .ticket-cutout::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: var(--ink);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        .ticket-cutout::before { left: -10px; }
+        .ticket-cutout::after { right: -10px; }
+
+        .timetable-border {
+            border-bottom: 1px solid rgba(16, 22, 20, 0.2);
+        }
+
+        nav a { position: relative; }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--tram-red);
+            transform-origin: bottom right;
+            transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .gradient-sky {
+            background: linear-gradient(180deg, #DCE2DD 0%, var(--sage) 100%);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#FACC15] selection:text-[#101614]">
+
+    <!-- TICKER: NEXT TRAM -->
+    <div class="w-full bg-[var(--ink)] text-white py-1.5 transit-font text-xs uppercase tracking-widest relative z-50">
+        <div class="marquee-container w-full max-w-7xl mx-auto px-4">
+            <div class="marquee-content items-center gap-16 font-medium text-[var(--sage)]">
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[var(--edge-yellow)] animate-pulse"></span>
+                    NEXT TRAM: GREEN LINE SOUTHBOUND <span class="text-white ml-2">[ ARRIVING ]</span>
+                </span>
+                <span>STOP: BEECHWOOD</span>
+                <span>MIMA OPEN: MON-FRI 8:00—15:30</span>
+                <span class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[var(--edge-yellow)] animate-pulse"></span>
+                    NEXT TRAM: GREEN LINE SOUTHBOUND <span class="text-white ml-2">[ ARRIVING ]</span>
+                </span>
+                <span>STOP: BEECHWOOD</span>
+                <span>MIMA OPEN: MON-FRI 8:00—15:30</span>
+            </div>
+        </div>
+    </div>
+    <div class="platform-edge relative z-50"></div>
+
+    <!-- STICKY NAVBAR -->
+    <header class="sticky top-0 z-40 bg-[var(--oat)]/95 backdrop-blur-sm border-b border-[var(--ink)]/10">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="transit-font text-[var(--ink)] text-xl font-bold tracking-tighter flex items-center gap-2 group">
+                <span class="bg-[var(--ink)] text-[var(--oat)] px-2 py-0.5 rounded-sm">MIMA</span>
+                <span class="opacity-80 group-hover:opacity-100 transition-opacity">COFFEE</span>
+            </a>
+
+            <nav class="hidden md:flex gap-8 transit-font text-sm uppercase tracking-wide font-medium">
+                <a href="#about">Origins</a>
+                <a href="#menu">Timetable / Menu</a>
+                <a href="#platform">The Platform</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="https://instagram.com/mimabeechwood" target="_blank" aria-label="Instagram" class="text-[var(--ink)] hover:text-[var(--tram-red)] transition-colors"><i class="ph ph-instagram-logo text-2xl"></i></a>
+                <a href="https://facebook.com/mimabeechwood" target="_blank" aria-label="Facebook" class="text-[var(--ink)] hover:text-[var(--tram-red)] transition-colors"><i class="ph ph-facebook-logo text-2xl"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="relative w-full h-[85vh] min-h-[600px] flex items-center justify-center p-4 lg:p-12 overflow-hidden bg-[var(--sage)] isolation-auto">
+        <div class="absolute inset-0 z-20 pointer-events-none window-frame"></div>
+
+        <div class="absolute inset-0 z-0 gradient-sky"></div>
+
+        <div class="relative z-30 flex flex-col items-center text-center max-w-4xl px-6 mt-[-10vh]">
+            <div class="inline-block border-2 border-[var(--ink)] px-4 py-1.5 transit-font text-sm font-bold tracking-widest text-[var(--ink)] uppercase mb-6 bg-[var(--oat)]/80 backdrop-blur-md rounded-full">
+                Green Line Kiosk
+            </div>
+            <h1 class="transit-font text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter leading-none text-[var(--ink)] mix-blend-color-burn">
+                ON THE LUAS,<br>OFF AT <span class="text-[var(--tram-red)]">BEECHWOOD.</span>
+            </h1>
+            <p class="mt-8 text-lg md:text-2xl font-medium text-[var(--ink)] max-w-2xl text-balance">
+                Family-run coffee right on the tram platform. Grab a window seat and watch it roll by.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 mt-10">
+                <a href="#platform" class="transit-font bg-[var(--ink)] text-white px-8 py-4 uppercase tracking-widest text-sm font-bold hover:bg-[var(--tram-red)] transition-colors rounded-sm shadow-[4px_4px_0_0_rgba(250,204,21,1)]">
+                    Find the Platform
+                </a>
+                <a href="#menu" class="transit-font bg-transparent border-2 border-[var(--ink)] text-[var(--ink)] px-8 py-4 uppercase tracking-widest text-sm font-bold hover:bg-[var(--ink)] hover:text-[var(--oat)] transition-colors rounded-sm">
+                    View Menu
+                </a>
+            </div>
+        </div>
+
+        <div class="tram-wrapper">
+            <div class="absolute bottom-2 w-full h-1 bg-[var(--ink)]/40 z-0"></div>
+            <div class="tram-slide z-10 w-[600px]" aria-hidden="true">
+                <svg viewBox="0 0 600 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto drop-shadow-xl">
+                    <path d="M280 20 L290 5 L310 5 L320 20" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+                    <line x1="270" y1="5" x2="330" y2="5" stroke="var(--ink)" stroke-width="2"/>
+                    <rect x="0" y="20" width="280" height="70" rx="8" fill="var(--oat)" stroke="var(--ink)" stroke-width="4"/>
+                    <rect x="275" y="30" width="50" height="50" fill="var(--ink)"/>
+                    <line x1="285" y1="30" x2="285" y2="80" stroke="var(--oat)" stroke-width="2"/>
+                    <line x1="295" y1="30" x2="295" y2="80" stroke="var(--oat)" stroke-width="2"/>
+                    <line x1="305" y1="30" x2="305" y2="80" stroke="var(--oat)" stroke-width="2"/>
+                    <line x1="315" y1="30" x2="315" y2="80" stroke="var(--oat)" stroke-width="2"/>
+                    <rect x="320" y="20" width="280" height="70" rx="8" fill="var(--oat)" stroke="var(--ink)" stroke-width="4"/>
+                    <rect x="0" y="70" width="280" height="8" fill="var(--sage)"/>
+                    <rect x="320" y="70" width="280" height="8" fill="var(--sage)"/>
+                    <rect x="20" y="35" width="40" height="25" rx="2" fill="var(--ink)"/>
+                    <rect x="70" y="35" width="40" height="25" rx="2" fill="var(--ink)"/>
+                    <rect x="120" y="25" width="30" height="60" fill="var(--ink)"/>
+                    <rect x="160" y="35" width="40" height="25" rx="2" fill="var(--ink)"/>
+                    <rect x="210" y="35" width="40" height="25" rx="2" fill="var(--ink)"/>
+                    <rect x="350" y="35" width="40" height="25" rx="2" fill="var(--ink)"/>
+                    <rect x="400" y="35" width="40" height="25" rx="2" fill="var(--ink)"/>
+                    <rect x="450" y="25" width="30" height="60" fill="var(--ink)"/>
+                    <rect x="490" y="35" width="40" height="25" rx="2" fill="var(--ink)"/>
+                    <rect x="540" y="35" width="40" height="25" rx="2" fill="var(--ink)"/>
+                    <circle cx="60" cy="94" r="6" fill="var(--ink)"/>
+                    <circle cx="220" cy="94" r="6" fill="var(--ink)"/>
+                    <circle cx="380" cy="94" r="6" fill="var(--ink)"/>
+                    <circle cx="540" cy="94" r="6" fill="var(--ink)"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT: COMMUNITY LAYER -->
+    <section id="about" class="py-24 bg-[var(--oat)] px-6 relative border-t-2 border-[var(--ink)]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative">
+
+            <div class="col-span-1 lg:col-span-5 flex flex-col justify-between order-2 lg:order-1">
+                <div>
+                    <h2 class="transit-font text-5xl font-bold tracking-tighter text-[var(--ink)] uppercase mb-6">Family-Run <span class="block text-[var(--sage-dark)]">Since 2014.</span></h2>
+                    <p class="text-xl leading-relaxed text-[var(--ink)] mb-6">
+                        Michael O'Donovan and family planted roots right on the platform edge. MIMA Coffee Company isn't just a clever location — it's a community anchor in Ranelagh, serving commuters, locals, and dog walkers beside Morton's Food Market.
+                    </p>
+                    <p class="text-lg text-[var(--ink)]/80">
+                        Operating from a compact kiosk, the rhythm here is dictated by the pulse of the Green Line. Every five minutes, another tram empties out, bringing another wave of regulars.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-span-1 lg:col-span-7 order-1 lg:order-2 bg-[var(--sage)] p-8 md:p-12 border-2 border-[var(--ink)] rounded-sm relative transform lg:-rotate-1">
+                <div class="w-4 h-4 rounded-full bg-[var(--tram-red)] absolute top-4 left-1/2 -translate-x-1/2 drop-shadow-md"></div>
+                <div class="transit-font text-[var(--ink)] uppercase tracking-wide text-sm font-bold border-b-2 border-[var(--ink)]/20 pb-4 mb-6 flex justify-between">
+                    <span>The Irish Times</span>
+                    <span>Feb 2019</span>
+                </div>
+                <blockquote class="text-[var(--ink)]">
+                    <p class="text-2xl md:text-3xl lg:text-4xl leading-tight font-medium relative ml-4">
+                        When a proposed Metro plan threatened to <em class="italic">cut Ranelagh in half</em>, Michael was one of the community voices who spoke up and helped push it back.
+                    </p>
+                </blockquote>
+                <div class="mt-8 ml-4 border-l-2 border-[var(--ink)] pl-4">
+                    <p class="transit-font font-bold uppercase text-[var(--ink)] tracking-widest text-sm">Featured in The Irish Times · February 2019</p>
+                    <p class="text-sm opacity-80 mt-1">Not just serving coffee on a tram platform, but showing up for the neighborhood.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS TICKET CAROUSEL -->
+    <section class="py-16 bg-[var(--ink)] overflow-hidden relative">
+        <div class="platform-edge absolute top-0 left-0"></div>
+        <div class="max-w-7xl mx-auto px-6 mb-12 mt-4 text-center">
+            <h3 class="transit-font text-white text-sm uppercase tracking-[0.2em] opacity-60">Overheard on the Platform</h3>
+        </div>
+
+        <div class="flex overflow-x-auto hide-scrollbar gap-6 px-6 pb-8 ml-auto mr-auto snap-x snap-mandatory">
+
+            <div class="snap-center shrink-0 w-[85vw] md:w-[400px] ticket-cutout p-8 border-2 border-[var(--ink)] shadow-[8px_8px_0_0_rgba(154,178,161,0.5)]">
+                <div class="transit-font text-[var(--sage-dark)] text-xs font-bold uppercase tracking-widest border-b border-dashed border-[var(--ink)]/30 pb-4 mb-4">Press Feature</div>
+                <p class="font-medium text-lg italic text-[var(--ink)] leading-relaxed mb-6">"Another tram rolls in and Mima Coffee Company empties out once again. This happens every five minutes or so at this compact café."</p>
+                <div class="font-bold transit-font flex items-center justify-between text-sm">
+                    <span class="uppercase">Lovin Dublin</span>
+                    <span class="text-[var(--tram-red)]">Aug 2019</span>
+                </div>
+            </div>
+
+            <div class="snap-center shrink-0 w-[85vw] md:w-[400px] ticket-cutout p-8 border-2 border-[var(--ink)] shadow-[8px_8px_0_0_rgba(154,178,161,0.5)]">
+                <div class="transit-font text-[var(--sage-dark)] text-xs font-bold uppercase tracking-widest border-b border-dashed border-[var(--ink)]/30 pb-4 mb-4">TripAdvisor</div>
+                <p class="font-medium text-lg italic text-[var(--ink)] leading-relaxed mb-6">"Lovely spot right on Beechwood Luas stop. Delightful local vibe about the place."</p>
+                <div class="font-bold transit-font flex items-center justify-between text-sm">
+                    <span class="uppercase">TripAdvisor Reviewer</span>
+                </div>
+            </div>
+
+            <div class="snap-center shrink-0 w-[85vw] md:w-[400px] ticket-cutout p-8 border-2 border-[var(--ink)] shadow-[8px_8px_0_0_rgba(154,178,161,0.5)]">
+                <div class="transit-font text-[var(--sage-dark)] text-xs font-bold uppercase tracking-widest border-b border-dashed border-[var(--ink)]/30 pb-4 mb-4">TripAdvisor</div>
+                <p class="font-medium text-lg italic text-[var(--ink)] leading-relaxed mb-6">"The food is amazing, great coffee and friendliest people. Sitting in the outdoor area this morning with the sun shining, was like a mini holiday."</p>
+                <div class="font-bold transit-font flex items-center justify-between text-sm">
+                    <span class="uppercase">TripAdvisor Reviewer</span>
+                </div>
+            </div>
+
+            <div class="snap-center shrink-0 w-[85vw] md:w-[400px] ticket-cutout p-8 border-2 border-[var(--ink)] shadow-[8px_8px_0_0_rgba(154,178,161,0.5)]">
+                <div class="transit-font text-[var(--sage-dark)] text-xs font-bold uppercase tracking-widest border-b border-dashed border-[var(--ink)]/30 pb-4 mb-4">Blog Review</div>
+                <p class="font-medium text-lg italic text-[var(--ink)] leading-relaxed mb-6">"A great little coffee shop that does fantastic coffees and food — very reasonably priced — it's all great quality."</p>
+                <div class="font-bold transit-font flex items-center justify-between text-sm">
+                    <span class="uppercase">Gin & Griddle</span>
+                    <span class="text-[var(--tram-red)]">Jul 2015</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MENU: THE TIMETABLE -->
+    <section id="menu" class="py-24 bg-[var(--oat)] px-6">
+        <div class="max-w-7xl mx-auto">
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 bg-[var(--sage)] p-6 md:p-8 rounded-sm border-2 border-[var(--ink)]">
+                <div>
+                    <h2 class="transit-font text-5xl md:text-7xl font-bold tracking-tighter text-[var(--ink)] uppercase">Kiosk Menu</h2>
+                    <p class="transit-font text-lg font-medium text-[var(--ink)]/70 uppercase">Morning – Lunch Service</p>
+                </div>
+                <div class="border-2 border-[var(--tram-red)] bg-[var(--oat)] p-4 md:px-6 relative before:content-[''] before:absolute before:w-1.5 before:h-full before:bg-[var(--tram-red)] before:left-0 before:top-0">
+                    <div class="transit-font text-[var(--tram-red)] font-bold uppercase text-xs tracking-widest mb-1 flex items-center gap-2">
+                        <i class="ph-fill ph-warning-circle text-lg"></i> Platform Highlight
+                    </div>
+                    <div class="font-bold text-xl uppercase transit-font mb-1">Today's GF Specialty Cake</div>
+                    <div class="bg-[var(--ink)] text-white px-2 py-1 inline-block text-xs uppercase transit-font tracking-widest mb-1 animate-pulse">
+                        [ ROTATES DAILY ]
+                    </div>
+                    <p class="text-sm italic opacity-80 mt-2">In-house GF specialty cakes, daily.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-x-12 lg:gap-x-16">
+
+                <div class="border-t-4 border-[var(--ink)] pt-4">
+                    <h3 class="transit-font text-2xl font-bold uppercase tracking-tight text-[var(--sage-dark)] mb-6 flex justify-between items-center">
+                        Breakfast
+                        <span class="text-[var(--ink)] text-xs border border-[var(--ink)] px-1 rounded-sm">08:00</span>
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg">Bacon Sandwich</span>
+                            <span class="transit-font text-sm">€5.00</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg">Mini Breakfast</span>
+                            <span class="transit-font text-sm">€7.50</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg">Breakfast Roll</span>
+                            <span class="transit-font text-sm">€4.95</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg">Eggs on Toast</span>
+                            <span class="transit-font text-sm">€4.95</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg">Kids Breakkie</span>
+                            <span class="transit-font text-sm">€3.50</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg">French Toast</span>
+                            <span class="transit-font text-sm">€13.50</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg">Breakfast Stack</span>
+                            <span class="transit-font text-sm">€11.50</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg">Shakshuka</span>
+                            <span class="transit-font text-sm">€14.50</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg text-balance">Avocado Eggs on Toast</span>
+                            <span class="transit-font text-sm">€13.50</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border-t-4 border-[var(--ink)] pt-4">
+                    <h3 class="transit-font text-2xl font-bold uppercase tracking-tight text-[var(--sage-dark)] mb-6 flex justify-between items-center">
+                        Lunch
+                        <span class="text-[var(--ink)] text-xs border border-[var(--ink)] px-1 rounded-sm">12:00</span>
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="timetable-border pb-2 flex justify-between items-start gap-4">
+                            <span class="font-bold text-lg leading-tight">Cajun Chicken Open Sandwich</span>
+                            <span class="transit-font text-sm shrink-0">€14.50</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-start gap-4">
+                            <span class="font-bold text-lg leading-tight">Halloumi, Pea & Mint Open Sandwich</span>
+                            <span class="transit-font text-sm shrink-0">€13.50</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-start gap-4">
+                            <span class="font-bold text-lg leading-tight">Pan-fried Ham & Cheese Sandwich</span>
+                            <span class="transit-font text-sm shrink-0">€13.50</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg">Chicken & Chorizo Sausage Roll</span>
+                            <span class="transit-font text-sm shrink-0">€7.50</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg">Super Soup</span>
+                            <span class="transit-font text-sm shrink-0">€7.50</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg">Tuscan Wrap</span>
+                            <span class="transit-font text-sm shrink-0">—</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-start gap-4">
+                            <span class="font-bold text-lg leading-tight">Ham & Swiss Sourdough</span>
+                            <span class="transit-font text-sm shrink-0">—</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border-t-4 border-[var(--ink)] pt-4">
+                    <h3 class="transit-font text-2xl font-bold uppercase tracking-tight text-[var(--sage-dark)] mb-6 flex justify-between items-center">
+                        Bakery
+                        <i class="ph-fill ph-croissant text-[var(--ink)] text-xl"></i>
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="timetable-border pb-2">
+                            <span class="font-bold text-lg block">Portuguese Tarts</span>
+                        </li>
+                        <li class="timetable-border pb-2">
+                            <span class="font-bold text-lg block">In-house Brownies</span>
+                            <span class="text-sm opacity-70 italic block">GF on some days</span>
+                        </li>
+                        <li class="timetable-border pb-2">
+                            <span class="font-bold text-lg block">Scones</span>
+                            <span class="text-sm opacity-70 italic block">Daily bake</span>
+                        </li>
+                        <li class="timetable-border pb-2 border-l-4 border-[var(--tram-red)] pl-3 -ml-4">
+                            <span class="font-bold text-lg block text-[var(--tram-red)]">Daily GF Specialty Cake</span>
+                            <span class="text-sm opacity-70 italic block">Rotates • In-house GF</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="border-t-4 border-[var(--ink)] pt-4">
+                    <h3 class="transit-font text-2xl font-bold uppercase tracking-tight text-[var(--sage-dark)] mb-6 flex justify-between items-center">
+                        Drinks
+                        <i class="ph-fill ph-coffee text-[var(--ink)] text-xl"></i>
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg">Cappuccino</span>
+                            <span class="transit-font text-sm">€3.15</span>
+                        </li>
+                        <li class="timetable-border pb-3 flex flex-col gap-1">
+                            <div class="flex justify-between items-baseline">
+                                <span class="font-bold text-lg">Specialty Shakes</span>
+                                <span class="transit-font text-sm">€5.00</span>
+                            </div>
+                            <span class="text-xs transit-font uppercase tracking-wider opacity-60">Bisco Disco • Oreo • Sam Bam • Teaser Pleaser • Izzo Bizzo</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg">Vanilla/Choc Shake</span>
+                            <span class="transit-font text-sm">€4.50</span>
+                        </li>
+                        <li class="timetable-border pb-3 flex flex-col gap-1">
+                            <div class="flex justify-between items-baseline">
+                                <span class="font-bold text-lg">Smoothies</span>
+                                <span class="transit-font text-sm">€6.00</span>
+                            </div>
+                            <span class="text-xs transit-font uppercase tracking-wider opacity-60">Sun Burst • Citrus Zinger • Classic Berry</span>
+                        </li>
+                        <li class="timetable-border pb-2 flex justify-between items-baseline">
+                            <span class="font-bold text-lg">Orange Juice</span>
+                            <span class="transit-font text-sm">€4.50</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- VISIT / PLATFORM INFO -->
+    <section id="platform" class="py-24 bg-[var(--ink)] text-[var(--oat)] border-t-8 border-[var(--tram-red)] relative z-20">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
+
+            <div class="col-span-1 lg:col-span-7 flex flex-col justify-center">
+                <div class="transit-font font-bold uppercase tracking-widest text-[var(--tram-red)] text-sm mb-4">Location Data</div>
+                <h2 class="transit-font text-5xl md:text-7xl font-bold uppercase tracking-tighter mix-blend-difference mb-8">
+                    Find Us on <br>The Platform.
+                </h2>
+
+                <div class="flex flex-col gap-8 my-8 relative w-full lg:w-3/4 bg-[var(--oat)]/5 p-8 rounded-sm">
+                    <div class="absolute w-1 lg:w-full h-full lg:h-1 bg-[var(--sage-dark)] top-8 lg:top-1/2 left-12 lg:left-8 transform lg:-translate-y-1/2 z-0"></div>
+
+                    <div class="flex flex-col lg:flex-row justify-between relative z-10 gap-8 h-full">
+                        <div class="flex lg:flex-col items-center gap-4 lg:gap-2">
+                            <div class="w-6 h-6 rounded-full bg-[var(--ink)] border-4 border-[var(--sage)] z-10 shrink-0"></div>
+                            <span class="transit-font uppercase text-xs font-bold opacity-50 tracking-wider">Ranelagh</span>
+                        </div>
+                        <div class="flex lg:flex-col items-center gap-4 lg:gap-2 -ml-2 lg:ml-0 lg:-mt-2">
+                            <div class="relative flex justify-center items-center shrink-0">
+                                <div class="animate-ping absolute w-10 h-10 rounded-full bg-[var(--tram-red)] opacity-40"></div>
+                                <div class="w-10 h-10 rounded-full bg-[var(--tram-red)] border-4 border-[var(--ink)] z-10 flex items-center justify-center">
+                                    <div class="w-3 h-3 bg-white rounded-full"></div>
+                                </div>
+                            </div>
+                            <span class="transit-font uppercase text-base font-bold text-white tracking-wider bg-[var(--ink)] px-2 py-0.5 rounded border border-[var(--tram-red)]">Beechwood</span>
+                        </div>
+                        <div class="flex lg:flex-col items-center gap-4 lg:gap-2">
+                            <div class="w-6 h-6 rounded-full bg-[var(--ink)] border-4 border-[var(--sage)] z-10 shrink-0"></div>
+                            <span class="transit-font uppercase text-xs font-bold opacity-50 tracking-wider">Cowper</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-xl mb-4 text-balance">
+                    <strong>Beechwood Luas Platform Kiosk</strong><br>
+                    1 Dunville Avenue, Ranelagh, Dublin 6, D06 XA48
+                </div>
+                <div class="opacity-80 text-lg mb-8 italic border-l-2 border-[var(--tram-red)] pl-4">
+                    Wait beside Morton's Food Market. MIMA shares the neighborhood line.
+                </div>
+
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Beechwood+Luas+Stop%2C+Dunville+Avenue%2C+Ranelagh%2C+Dublin+6%2C+Ireland" target="_blank" class="transit-font bg-[var(--tram-red)] text-white px-6 py-3 uppercase tracking-widest text-sm font-bold hover:bg-[var(--sage)] hover:text-[var(--ink)] transition-colors inline-flex items-center gap-2 rounded-sm">
+                        <i class="ph-bold ph-map-pin"></i> Route Map
+                    </a>
+                    <a href="tel:+35314960008" class="transit-font border border-[var(--oat)] text-[var(--oat)] px-6 py-3 uppercase tracking-widest text-sm font-bold hover:bg-[var(--oat)] hover:text-[var(--ink)] transition-colors inline-flex items-center gap-2 rounded-sm">
+                        <i class="ph-bold ph-phone"></i> +353 1 496 0008
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-span-1 lg:col-span-5 bg-[var(--ink)] border border-white/10 relative p-8 md:p-12 shadow-2xl flex flex-col justify-center">
+                <div class="absolute top-0 left-0 w-full platform-edge h-2"></div>
+                <h3 class="transit-font text-3xl font-bold uppercase tracking-tight text-[var(--sage)] flex items-center gap-3 mb-8">
+                    <i class="ph-bold ph-clock"></i> Schedule
+                </h3>
+
+                <table class="w-full text-left transit-font border-collapse">
+                    <tbody>
+                        <tr class="border-b border-white/10 group hover:bg-white/5 transition-colors">
+                            <td class="py-4 text-white/50 uppercase tracking-widest text-sm font-medium w-1/2">Mon — Fri</td>
+                            <td class="py-4 text-white text-lg font-bold">8:00 — 15:30</td>
+                        </tr>
+                        <tr class="border-b border-white/10 group hover:bg-white/5 transition-colors">
+                            <td class="py-4 text-white/50 uppercase tracking-widest text-sm font-medium">Saturday</td>
+                            <td class="py-4 text-white text-lg font-bold">9:00 — 15:00</td>
+                        </tr>
+                        <tr class="border-b border-white/10 group hover:bg-white/5 transition-colors">
+                            <td class="py-4 text-white/50 uppercase tracking-widest text-sm font-medium">Sunday</td>
+                            <td class="py-4 text-white text-lg font-bold">9:00 — 15:00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="mt-8 transit-font text-xs uppercase tracking-widest text-[#FACC15] flex items-center gap-2">
+                    <i class="ph-fill ph-info"></i> Morning & Lunch Cafe ONLY. No evening service.
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[var(--ink)] text-[var(--oat)] pt-12 pb-6 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+
+            <div class="flex items-center gap-2 transit-font text-xl font-bold">
+                <span class="bg-[var(--oat)] text-[var(--ink)] px-2 py-0.5 rounded-sm">MIMA</span>
+                <span class="text-white/80">COFFEE CO.</span>
+            </div>
+
+            <div class="flex items-center gap-6 transit-font text-sm uppercase tracking-wide">
+                <a href="mailto:Mimacoffee@outlook.com" class="hover:text-[var(--tram-red)] transition-colors flex items-center gap-2">
+                    <i class="ph-bold ph-envelope-simple text-lg"></i>
+                    Mimacoffee@outlook.com
+                </a>
+                <a href="https://instagram.com/mimabeechwood" target="_blank" class="hover:text-[var(--tram-red)] transition-colors px-2">Instagram</a>
+                <a href="https://facebook.com/mimabeechwood" target="_blank" class="hover:text-[var(--tram-red)] transition-colors px-2">Facebook</a>
+            </div>
+
+            <div class="text-white/30 text-xs transit-font uppercase tracking-widest">
+                © Kiosk D06 XA48
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>
