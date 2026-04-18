@@ -16,6 +16,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+    <!-- Critical above-the-fold preloads -->
+    <link rel="preload" as="image" href="./logo.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="./frames_web/frame_0001.webp" fetchpriority="high" media="(min-width: 768px)">
+    <link rel="preload" as="video" href="./hero-pingpong.mp4" type="video/mp4" fetchpriority="high" media="(max-width: 767px)">
+
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
@@ -425,7 +430,7 @@
     <!-- Loader -->
     <div id="loader" aria-hidden="true">
         <div class="loader-wordmark">hideaway</div>
-        <div class="loader-sub">Opening the door · <span id="loader-count">0</span>/121 frames</div>
+        <div class="loader-sub">Opening the door</div>
         <div class="loader-bar-track"><div class="loader-bar-fill" id="loader-bar"></div></div>
     </div>
 
@@ -590,7 +595,7 @@
                     <cite class="text-xs uppercase tracking-widest text-brick font-medium not-italic">&mdash; recent visitor, 2025</cite>
                 </div>
                 <div class="md:col-span-4 h-[60vh] md:-mt-16 z-0">
-                    <img src="./assets/latte-interior.jpg" alt="A latte with tulip art in a speckled ceramic cup, warm cafe interior glowing behind with fairy lights." class="editorial-img h-full w-full object-cover shadow-lg border-4 border-cream" />
+                    <img src="./assets/latte-interior.jpg" alt="A latte with tulip art in a speckled ceramic cup, warm cafe interior glowing behind with fairy lights." loading="lazy" decoding="async" class="editorial-img h-full w-full object-cover shadow-lg border-4 border-cream" />
                 </div>
             </div>
         </section>
@@ -605,7 +610,7 @@
                         <p class="text-xs uppercase tracking-widest text-amber/75 font-medium mb-3">Chalk on the wall</p>
                         <h2 class="text-5xl md:text-7xl font-serif tracking-tighter text-cream">The menu</h2>
                     </div>
-                    <img src="./assets/menu-board.jpg" alt="The pastry case and polaroid wall above Hideaway's counter." class="h-28 w-auto rounded-[4px] object-cover ring-1 ring-cream/20" />
+                    <img src="./assets/menu-board.jpg" alt="The pastry case and polaroid wall above Hideaway's counter." loading="lazy" decoding="async" class="h-28 w-auto rounded-[4px] object-cover ring-1 ring-cream/20" />
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -737,7 +742,7 @@
                             <i class="ph ph-croissant" aria-hidden="true"></i> Delivered fresh each morning. Ask what's out today.
                         </p>
 
-                        <img src="./assets/pastries.jpg" alt="" aria-hidden="true" class="absolute -bottom-10 -right-10 w-48 h-48 object-cover rounded-full opacity-30 transition-transform duration-700 group-hover:scale-110 z-0">
+                        <img src="./assets/pastries.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async" class="absolute -bottom-10 -right-10 w-48 h-48 object-cover rounded-full opacity-30 transition-transform duration-700 group-hover:scale-110 z-0">
                     </div>
 
                     <!-- Smoothies & Juice (flat £8) -->
@@ -898,7 +903,7 @@
             </div>
             <video class="coffee-mobile-video"
                    autoplay muted loop playsinline
-                   preload="auto"
+                   preload="metadata"
                    poster="./frames_coffee/frame_0121.webp"
                    aria-hidden="true">
                 <source src="./coffee-loop.mp4" type="video/mp4">
@@ -938,12 +943,12 @@
                     </div>
                     <div class="relative">
                         <div class="absolute inset-0 bg-forest/5 -translate-x-4 translate-y-4 rounded-[6px]" aria-hidden="true"></div>
-                        <img src="./assets/branded-cup-carnaby.jpg" alt="A takeaway cup with the hand-drawn 'VERY NICE COFFEE AT HIDEAWAY' illustration held up at the Carnaby Street archway at night, pink star-lights glowing behind." class="editorial-img relative shadow-md" />
+                        <img src="./assets/branded-cup-carnaby.jpg" alt="A takeaway cup with the hand-drawn 'VERY NICE COFFEE AT HIDEAWAY' illustration held up at the Carnaby Street archway at night, pink star-lights glowing behind." loading="lazy" decoding="async" class="editorial-img relative shadow-md" />
                     </div>
                 </div>
                 <figure class="w-full mt-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
                     <div class="md:col-span-8">
-                        <img src="./assets/interior-window-bar.jpg" alt="Two customers at the window bar looking out onto Smith's Court, pendant lamps overhead, fairy lights and plants framing the grid-paned window." class="editorial-img h-64 md:h-96 w-full object-cover rounded-[6px]" />
+                        <img src="./assets/interior-window-bar.jpg" alt="Two customers at the window bar looking out onto Smith's Court, pendant lamps overhead, fairy lights and plants framing the grid-paned window." loading="lazy" decoding="async" class="editorial-img h-64 md:h-96 w-full object-cover rounded-[6px]" />
                     </div>
                     <figcaption class="md:col-span-4 text-sm font-serif italic text-brick pb-2">&mdash; Window bar, winter afternoon.</figcaption>
                 </figure>
@@ -956,7 +961,7 @@
                 <video
                     class="block w-full h-auto object-cover"
                     autoplay muted loop playsinline
-                    preload="auto"
+                    preload="metadata"
                     poster="./frames_web/frame_0060.webp"
                     aria-hidden="true">
                     <source src="./ambient-loop.mp4" type="video/mp4">
@@ -1038,7 +1043,7 @@
                     </div>
                 </div>
                 <figure class="w-full mt-16 relative">
-                    <img src="./assets/outdoor-flat-white.jpg" alt="A flat white in a stoneware cup held on the lap at a blue bistro chair in the courtyard." class="w-full h-80 md:h-[500px] object-cover rounded-[6px]" />
+                    <img src="./assets/outdoor-flat-white.jpg" alt="A flat white in a stoneware cup held on the lap at a blue bistro chair in the courtyard." loading="lazy" decoding="async" class="w-full h-80 md:h-[500px] object-cover rounded-[6px]" />
                     <figcaption class="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-cream/90 backdrop-blur-sm text-forest px-4 py-2 rounded-[4px] text-xs font-medium uppercase tracking-wide flex items-center gap-2 shadow-lg">
                         <i class="ph ph-sun" aria-hidden="true"></i> Courtyard seating, blue chairs, flat white weather.
                     </figcaption>
@@ -1135,10 +1140,15 @@
             if (scrollProgress) scrollProgress.style.width = (pct * 100).toFixed(2) + '%';
         }
 
-        /* ---------- frame preload (desktop only) ---------- */
+        /* ---------- frame preload (desktop only) ----------
+           Strategy: fade loader after a small WARMUP batch loads (not all 121).
+           Remaining frames continue downloading in the background. draw() walks
+           to the nearest loaded frame if the exact target hasn't arrived yet. */
         const FRAME_COUNT = 121;
+        const WARMUP_COUNT = 24;  // ~1.7MB before first paint, enough for 0-20% of scroll
         const frames = new Array(FRAME_COUNT);
         let loaded = 0;
+        let heroReady = false;
         const loaderBar   = document.getElementById('loader-bar');
         const loaderCount = document.getElementById('loader-count');
 
@@ -1159,15 +1169,29 @@
         for (let i = 0; i < FRAME_COUNT; i++){
             const img = new Image();
             img.decoding = 'async';
+            if (i === 0) img.fetchPriority = 'high';
+            else if (i >= WARMUP_COUNT) img.fetchPriority = 'low';
             img.src = frameUrl(i);
             img.onload = img.onerror = () => {
                 loaded++;
                 const pct = loaded / FRAME_COUNT;
                 if (loaderBar)   loaderBar.style.width   = (pct * 100).toFixed(1) + '%';
                 if (loaderCount) loaderCount.textContent = loaded;
-                if (loaded === FRAME_COUNT) onAllFramesReady();
+                if (!heroReady && loaded >= WARMUP_COUNT) onHeroWarmReady();
             };
             frames[i] = img;
+        }
+
+        /* nearest-available-frame walk, for mid-scroll gaps while background load continues */
+        function resolveFrame(idx){
+            if (frames[idx] && frames[idx].complete && frames[idx].naturalWidth > 0) return idx;
+            // walk backwards first (show earlier of the animation), then forwards
+            for (let d = 1; d < FRAME_COUNT; d++){
+                const back = idx - d, fwd = idx + d;
+                if (back >= 0 && frames[back] && frames[back].complete && frames[back].naturalWidth > 0) return back;
+                if (fwd < FRAME_COUNT && frames[fwd] && frames[fwd].complete && frames[fwd].naturalWidth > 0) return fwd;
+            }
+            return 0;
         }
 
         function resize(){
@@ -1181,7 +1205,8 @@
         /* COVER draw — fills the canvas, crops overflow.
            Frame sequence IS the zoom; no bottom-anchor lerp needed. */
         function draw(i){
-            const img = frames[i];
+            const ready = resolveFrame(i);
+            const img = frames[ready];
             if (!img || !img.complete || img.naturalWidth === 0) return;
             const dpr = Math.min(window.devicePixelRatio || 1, 2);
             const cw = canvas.width  / dpr;
@@ -1358,7 +1383,9 @@
             });
         }
 
-        function onAllFramesReady(){
+        function onHeroWarmReady(){
+            if (heroReady) return;
+            heroReady = true;
             resize();
             draw(0);
             updateHeroFade(0);
@@ -1373,8 +1400,23 @@
                 updateCoffeeState();
             });
 
-            // Kick off coffee frame preload now that hero is done — don't block the loader fade
-            preloadCoffeeFrames();
+            /* Lazy-start coffee frames only when user approaches that section — don't eat
+               bandwidth if they bounce from the hero. Observer triggers ~1 viewport out. */
+            if ('IntersectionObserver' in window && coffeeSection){
+                const observer = new IntersectionObserver((entries) => {
+                    for (const entry of entries){
+                        if (entry.isIntersecting){
+                            preloadCoffeeFrames();
+                            observer.disconnect();
+                            break;
+                        }
+                    }
+                }, { rootMargin: '150% 0px 150% 0px' });
+                observer.observe(coffeeSection);
+            } else {
+                // Fallback: kick off after a short idle beat
+                setTimeout(preloadCoffeeFrames, 2000);
+            }
 
             requestAnimationFrame(() => {
                 loader.style.opacity = '0';
@@ -1382,12 +1424,12 @@
             });
         }
 
-        /* fail-safe: if something blocks a frame load beyond 8s, drop the loader anyway */
+        /* fail-safe: if even the warmup batch stalls, drop the loader after 6s with whatever's ready */
         setTimeout(() => {
-            if (loader.style.display !== 'none' && loaded < FRAME_COUNT){
-                onAllFramesReady();
+            if (!heroReady && loaded > 0){
+                onHeroWarmReady();
             }
-        }, 8000);
+        }, 6000);
     })();
     </script>
 </body>
